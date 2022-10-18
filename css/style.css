@@ -1,0 +1,12 @@
+/* Background Image Style */
+.bg-image{
+    background-color: black;
+    background-image: url('../uploads/private/upcoming.jpg');
+    background-size: cover;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    /* object-fit: cover; */
+}

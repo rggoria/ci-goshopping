@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Homepage extends CI_Controller {
+class Login extends CI_Controller {
     /*  Constructor  */
     public function __construct() {
         parent::__construct();
@@ -17,12 +17,10 @@ class Homepage extends CI_Controller {
     }
     public function index() {
         // Setup Data
-        $data['title'] = "Homepage";
+        $data['title'] = "Login";
 
         // Load view file        
         $this->load->view('include/header', $data);
-        $this->load->view('include/navbar', $data);
-        $this->load->view('forums/homepage', $data);
-        $this->load->view('include/footer', $data);
+        $this->load->view('users/login_view', $data);
     }
 }
