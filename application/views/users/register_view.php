@@ -18,13 +18,13 @@
                     <div class="col-6">
                         <label class="form-label">Firstname</label>
                         <input type="text" name="firstname" class="form-control" placeholder="First Name">
-                        <small class="text-danger fw-bold fst-italic"> </small>
+                        <small class="text-danger fw-bold fst-italic"><?php echo form_error('firstname') ?></small>
                     </div>
 
                     <div class="col-6">
                         <label class="form-label">Lastname</label>
                         <input type="text" name="lastname" class="form-control" placeholder="Last Name">
-                        <small class="text-danger fw-bold fst-italic"> </small>
+                        <small class="text-danger fw-bold fst-italic"><?php echo form_error('lastname') ?></small>
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@
                                 <span class="input-group-text"><i class="fa-solid fa-user"></i></i></span>
                                 <input type="text" name="username" class="form-control" placeholder="Username">
                             </div>
-                            <small class="text-danger fw-bold fst-italic"> </small>
+                            <small class="text-danger fw-bold fst-italic"><?php echo form_error('username') ?></small>
                         </div>
 
                         <div class="col">
@@ -45,7 +45,7 @@
                                 <span class="input-group-text"><i class="fa-sharp fa-solid fa-envelope"></i></span>
                                 <input type="email" name="email" class="form-control" placeholder=" Email Address">
                             </div>
-                            <small class="text-danger fw-bold fst-italic"> </small>
+                            <small class="text-danger fw-bold fst-italic"><?php echo form_error('email') ?></small>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                                 <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                                 <input type="password" name="password" class="form-control" placeholder="Password">
                             </div>
-                            <small class="text-danger fw-bold fst-italic"> </small>
+                            <small class="text-danger fw-bold fst-italic"><?php echo form_error('password') ?></small>
                         </div>
                     
                         <div class="col">
@@ -67,7 +67,7 @@
                                 <span class="input-group-text"><i class="fa-sharp fa-solid fa-key"></i></span>
                                 <input type="password" name="rePass" class="form-control" placeholder="Re-enter Password">
                             </div>
-                            <small class="text-danger fw-bold fst-italic"></small>
+                            <small class="text-danger fw-bold fst-italic"><?php echo form_error('rePass') ?></small>
                         </div>
                     </div>
                 </div>

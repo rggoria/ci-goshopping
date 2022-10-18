@@ -65,7 +65,6 @@ class Register extends CI_Controller {
         // Form Validation
         if (!$this->form_validation->run()) {
             $this->index();
-            echo "error";
         } else {
             $firstname = $this->input->post('firstname');
             $lastname = $this->input->post('lastname');
