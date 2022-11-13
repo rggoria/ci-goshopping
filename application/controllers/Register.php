@@ -17,11 +17,13 @@ class Register extends CI_Controller {
     }
     public function index() {
         // Setup Data
-        $data['title'] = "Register";
-
-        // Load view file        
+        $data['title'] = "GoShopping: Register";
+        
+        // Load view file
         $this->load->view('include/header', $data);
+        $this->load->view('include/navbar', $data);
         $this->load->view('users/register_view', $data);
+        $this->load->view('include/footer', $data);
     }
 
     // Register Validation Function

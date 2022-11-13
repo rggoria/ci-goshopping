@@ -10,6 +10,6 @@
     <!-- Font Awesome Library -->
     <script src="https://kit.fontawesome.com/767b1164ff.js" crossorigin="anonymous"></script>
     <!-- CSS -->
-    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url(); ?>css/style.css">
+    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url(); ?>assets/css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
