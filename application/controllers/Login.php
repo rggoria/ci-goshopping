@@ -46,7 +46,8 @@ class Login extends CI_Controller {
                     'login_username' => $account->user_username,
                     'login_email' => $account->user_email,
                     'login_password' => $account->user_password,
-                    'login_status' => $account->user_status       
+                    'login_status' => $account->user_status,
+                    'login_state' => 'ACTIVE'   
                 );
                 $this->session->set_userdata($session_login);
                 redirect('Homepage');

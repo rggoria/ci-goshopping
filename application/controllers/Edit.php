@@ -5,9 +5,9 @@ class Edit extends CI_Controller {
     public function __construct() {
         parent::__construct();
         // Load the models
-        $this->load->model(array(
-            // 'Post_model' => 'postdb',
-            'Users_model' => 'userdb'
+        $this->load->model(array(            
+            'Users_model' => 'userdb',
+            'Order_model' => 'orderdb'
         ));
         // Load the helpers needed
         $this->load->helper(array('form','url'));
@@ -16,9 +16,19 @@ class Edit extends CI_Controller {
     }
     // Edit Function
     public function index(){
-        if($this->session->userdata('state') == 'ACTIVE'){
+        if($this->session->userdata('login_state') == 'ACTIVE'){
             // Setup Data
             $data['title'] = "GoShopping: Edit Profile";
+
+            // My Cart        
+            $username = $this->session->userdata('login_username');
+            $count = $this->orderdb->get_order_count($username);
+            if($count == NULL) {
+                $data['order_count'] = 0;            
+            } else {
+                $data['order_count'] = $count; 
+            }  
+
             // Load model to fetch data
             $data['users'] = $this->userdb->get_user($this->session->userdata('id'));
             // Load view file        

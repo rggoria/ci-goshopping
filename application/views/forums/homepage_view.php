@@ -23,7 +23,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Meat</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="<?php echo site_url('Homepage/Category') ?>" class="btn btn-white border-dark">Go to Meat Category</a>
+                                <a href="<?php echo site_url('Homepage/Category/Meat') ?>" class="btn btn-white border-dark">Go to Meat Category</a>
                             </div>
                         </div>
                     </div>
@@ -75,9 +75,9 @@
                         <div class="card">
                             <img src="http://unblast.com/wp-content/uploads/2020/09/Fruit-and-Vegetable-Icons-2.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Fruits & Vegetables</h5>
+                                <h5 class="card-title">Fruits and Vegetables</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="<?= site_url('Homepage/category/Fruits & Vegetables');?>" class="btn btn-white border-dark">Go to Fruits & Vegetables Category</a>
+                                <a href="<?= site_url('Homepage/category/Fruits and Vegetables');?>" class="btn btn-white border-dark">Go to Fruits and Vegetables Category</a>
                             </div>
                         </div>
                     </div>
@@ -128,9 +128,9 @@
                         <div class="card">
                             <img src="https://static.vecteezy.com/system/resources/previews/005/317/422/non_2x/bakery-icons-set-outline-style-vector.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Bread | Bakery</h5>
+                                <h5 class="card-title">Bread and Bakery</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="<?= site_url('Homepage/category/Bread | Bakery');?>" class="btn btn-white border-dark">Go to Bread | Bakery Category</a>
+                                <a href="<?= site_url('Homepage/category/Bread and Bakery');?>" class="btn btn-white border-dark">Go to Bread and Bakery Category</a>
                             </div>
                         </div>
                     </div>
@@ -171,9 +171,9 @@
                         <div class="card">
                             <img src="https://media.istockphoto.com/id/1144415199/vector/colored-icon-collection-food-in-aluminum-can-canned-fruits-and-olives-product-for.jpg?s=612x612&w=0&k=20&c=GVwbbInV2vcZs8JKCPdxswhhwxMSIrK19yfYVqJIDZw=" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Canned|Jarred Goods</h5>
+                                <h5 class="card-title">Canned and Jarred Goods</h5>
                                 <p class="card-text">All- purpose, laundry detergent, dishwashing liquid/detergent</p>
-                                <a href="<?= site_url('Homepage/category/Canned|Jarred Goods');?>" class="btn btn-white border-dark">Go to Canned|Jarred Goods Category</a>
+                                <a href="<?= site_url('Homepage/category/Canned and Jarred Goods');?>" class="btn btn-white border-dark">Go to Canned and Jarred Goods Category</a>
                             </div>
                         </div>
                     </div>
@@ -197,7 +197,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Cereal</h5>
                                 <p class="card-text">Oats, rice, wheat, granola, etc.</p>
-                                <a href="#" class="btn btn-white border-dark">Go to Cereal Category</a>
+                                <a href="<?= site_url('Homepage/category/Cereal');?>" class="btn btn-white border-dark">Go to Cereal Category</a>
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Frozen Foods</h5>
                                 <p class="card-text">Fish, ice cream, pizza, potatoes, ready meals, etc.</p>
-                                <a href="#" class="btn btn-white border-dark">Go to Frozen Foods Category</a>
+                                <a href="<?= site_url('Homepage/category/Frozen Foods');?>" class="btn btn-white border-dark">Go to Frozen Foods Category</a>
                             </div>
                         </div>
                     </div>
@@ -215,9 +215,9 @@
                         <div class="card">
                             <img src="http://cdn.shopify.com/s/files/1/0434/9824/2204/collections/Rice_Pasta_Noodles_1200x1200.png?v=1597717641" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Pasta|Rice</h5>
+                                <h5 class="card-title">Pasta and Rice</h5>
                                 <p class="card-text">Spaghetti, macaroni, noodles, white rice, etc.</p>
-                                <a href="#" class="btn btn-white border-dark">Go to Pasta|Rice Category</a>
+                                <a href="<?= site_url('Homepage/category/Pasta and Rice');?>" class="btn btn-white border-dark">Go to Pasta|Rice Category</a>
                             </div>
                         </div>
                     </div>
@@ -240,7 +240,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Deli</h5>
                                 <p class="card-text">Cheese, ham, turkey, salami, etc</p>
-                                <a href="#" class="btn btn-white border-dark">Go to Deli Category</a>
+                                <a href="<?= site_url('Homepage/category/Deli');?>" class="btn btn-white border-dark">Go to Deli Category</a>
                             </div>
                         </div>
                     </div>
@@ -259,7 +259,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Others</h5>
                                 <p class="card-text">Baby items, pet items, batteries, greeting cardsp, flowers, tobacco, etc. </p>
-                                <a href="#" class="btn btn-white border-dark">Go to Others Category</a>
+                                <a href="<?= site_url('Homepage/category/Others');?>" class="btn btn-white border-dark">Go to Others Category</a>
                             </div>
                         </div>
                     </div>

@@ -8,9 +8,9 @@
                 }
             } else {
                 echo ucfirst($section);
-            } ?> Category</h1>
+            } ?> Category
+    </h1>
 </section>
-<!-- START OF  MEAT CATEGORY -->
 <div class="container mt-3 mb-3">
     <div class="row">
         <?php foreach($category as $product): ?>
@@ -20,11 +20,13 @@
                     <div class="card-body mt-5 text-center">
                         <h5 class="card-title mt-4"><?= $product->product_name; ?></h5>
                         <p class="card-text"><?= $product->product_description; ?></p>
-                        <a href="#" class="btn btn-white border-dark">Add to card</a>
+
+                        <a href="<?= site_url('Order/order/'.$product->product_id); ?>" class="btn btn-white border-dark">Add to cart</a>
+
+                        
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
-<!-- END OF MEAT CATEGORY -->

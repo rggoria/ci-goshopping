@@ -7,7 +7,7 @@ class Profile extends CI_Controller {
         parent::__construct();
         // Load the models
         $this->load->model(array(
-            // 'Post_model' => 'postdb',
+            'Order_model' => 'orderdb',
             'Users_model' => 'userdb'
         ));
         // Load the helpers needed
@@ -18,6 +18,16 @@ class Profile extends CI_Controller {
     public function index() {
         // Setup Data
         $data['title'] = "GoShopping: Profile";
+
+        // My Cart        
+        $username = $this->session->userdata('login_username');
+        $count = $this->orderdb->get_order_count($username);
+        if($count == NULL) {
+            $data['order_count'] = 0;            
+        } else {
+            $data['order_count'] = $count; 
+        }  
+
         // Load view file        
         $this->load->view('include/header', $data);
         $this->load->view('include/navbar', $data);

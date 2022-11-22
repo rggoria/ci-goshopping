@@ -26,8 +26,10 @@
                     <span class="text-black-50"><?= $users->user_email; ?></span><span> </span>
                 </div>
                 <!-- Upload User Avatar -->
+
                 <div class="ms-5 col-md-10 mt-2">
                     <h6>Upload Your Avatar Here:</h6>
+                <!-- FILE UPLOAD -->
                     <input type="file" name="avatar" class="form-control">
                         <small class="text-danger fw-bold fst-italic"></small>
                 </div>

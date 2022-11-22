@@ -16,12 +16,21 @@
                         <ul class="dropdown-menu">                            
                             <li><a class="dropdown-item" href="<?= site_url('Profile'); ?>"><span class="fa-solid fa-gear"></span>&nbsp;My Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="<?= site_url('Login/logout_user'); ?>"><span class="fa-solid fa-sign-out"></span>&nbsp;Logout</a></li>                            
+                            <li><a class="dropdown-item" href="<?= site_url('Login/logout_user'); ?>"><span class="fa-solid fa-sign-out"></span>&nbsp;Logout</a></li>                             
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="btn fw-bold">Your Cart</a>
+                        <a href="<?= site_url('Order/checkout/'); ?>" class="btn fw-bold">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            My Cart                            
+                            <?php if (!$order_count == 0): ?>
+                                <span class="badge bg-primary">
+                                <?= $order_count; ?>
+                            <?php endif; ?>
+                            </span>
+                        </a>
                     </li> 
+
                 <?php else: ?>
                     <li class="nav-item">
                         <a href="<?= site_url('Login'); ?>" class="btn fw-bold me-2">Login</a>
@@ -30,8 +39,13 @@
                         <a href="<?= site_url('Register'); ?>" class="btn fw-bold me-2">Signup</a> 
                     </li>
                     <li class="nav-item">
-                        <a href="" class="btn fw-bold">Your Cart</a>
-                    </li> 
+                        <a href="" class="btn fw-bold"><i class="fa-solid fa-cart-shopping"></i> Your Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= site_url('Admin'); ?>" class="btn fw-bold"> Admin</a>
+                    </li>  
+
+                    
                 <?php endif; ?>
             </ul>
         </div>

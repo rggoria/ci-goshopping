@@ -11,9 +11,9 @@ class Register extends CI_Controller {
             'Users_model' => 'userdb'
         ));
         // Load the helpers needed
-        $this->load->helper(array('form','url'));
+        $this->load->helper(array('form','url', 'string'));
         // Load the libraries needed
-        $this->load->library(array('form_validation', 'session'));
+        $this->load->library(array('email', 'form_validation', 'session'));
     }
     public function index() {
         // Setup Data
@@ -25,64 +25,140 @@ class Register extends CI_Controller {
         $this->load->view('users/register_view', $data);
         $this->load->view('include/footer', $data);
     }
-
-    // Register Validation Function
-    public function register_validation(){
-        $required = "This field must not be empty";
-        $regex_match = "Invalid input. Try another.";
-
-        $this->form_validation->set_rules('firstname', 'First Name', 'required|regex_match[/^[a-zA-Z].*[\s\.]*$/]', array(
-            'required' => $required,
-            'regex_match' => $regex_match
-        ));
-
-        $this->form_validation->set_rules('lastname', 'Last Name', 'required|regex_match[/^[a-zA-Z].*[\s\.]*$/]', array(
-            'required' => $required,
-            'regex_match' => $regex_match
-        ));
-
-        $this->form_validation->set_rules('username', 'User Name', 'required|min_length[6]|alpha_numeric|is_unique[table_user.user_username]', array(
-            'required' => $required,
-            'min_length' => 'Must contain at least 6 characters',
-            'alpha_numeric' => 'Must only contain alpha-numeric characters',
-            'is_unique' => 'That username is taken. Try another.'
-        ));
-
+    
+    // Register Email Validation Function
+    public function email_validation(){
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[table_user.user_email]', array(
-            'required' => $required,
+            'required' => "This field must not be empty",
             'valid_email' => 'Invalid email format',
             'is_unique' => 'That email is taken. Try another.'
         ));
 
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]', array(
-            'required' => $required,
-            'min_length' => 'Must contain at least 8 characters'
-        ));
-        $this->form_validation->set_rules('rePass', "Confirm Password", 'required|matches[password]|min_length[8]', array (
-            'required' => $required,
-            'min_length' => 'Must contain at least 8 character',
-            'matches' => 'Password does not match'
-        ));
-        
         // Form Validation
         if (!$this->form_validation->run()) {
             $this->index();
         } else {
-            $firstname = $this->input->post('firstname');
-            $lastname = $this->input->post('lastname');
-            $username = $this->input->post('username');
             $email = $this->input->post('email');
-            $password = $this->input->post('password');
-            $status = 'USER';
+            $code = random_string('numeric', 4);
+            // Email config
+            $config_email = array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'smtp.gmail.com',
+                'smtp_port' => 465,
+                'smtp_user' => $this->config->item('email'),
+                'smtp_pass' => $this->config->item('password'),
+                'smtp_crypto' => 'ssl',
+                'mailtype' => 'html',
+                'smtp_timeout' => '4',
+                'charset' => 'iso-8859-1',
+                'newline' => "\r\n",
+                'wordwrap' => TRUE
+            );
+            $this->email->initialize($config_email);
+            $this->email->from('noreply@email.com', 'Go Shopping');
+            $this->email->to($email);            
+            $this->email->subject('Verify Email Address');
 
-            // Get data from inputs
-            $data['user_firstname'] = $firstname;        
-            $data['user_lastname'] = $lastname;
-            $data['user_username'] = $username;
-            $data['user_email'] = $email;
-            $data['user_password'] = $password;
-            $data['user_status'] = $status;
-            $this->userdb->create_user($data);
-        }   
+            $message = '<body style="background-color:#FFFFFF;">';
+            $message .= '<center><div class="navbar" style="background-color:#050038; overflow: hidden;"><img src="https://i.imgur.com/lsxEtnQ.png" style="width:105px; height: 100px;"></div></center>';
+            $message .= '<center><h3>Go Shopping Mods Verification</h3></center>';
+            $message .= '<h3>You have entered your email at Go Shopping Mods to register a new account. So we can get you started, please enter the code below on the signup page:</h3>';
+            $message .= '<center><h1>'. $code .'</h1></center>';
+            $message .= '<h3>We look forward to you joining our community!</p>';
+            $message .= '<h3>If you did not attempt to register an account, please ignore this email.</p>';
+            
+            $this->email->message($message);
+            
+            if ($this->email->send()){
+                $session_register = array(                                      
+                    'code' => $code,
+                    'email' => $email
+                );
+                $this->session->set_flashdata($session_register); 
+                echo $email;
+                echo $code;
+                redirect('Register/verify');
+            }else{
+                echo $this->email->print_debugger();
+            }
+        }
+    }
+
+    // Register Verify Function
+    public function verify(){
+        $this->session->keep_flashdata(array('email', 'code'));
+        $data['title'] = "GoShopping: Verify Code";
+        // Load view file        
+        $this->load->view('include/header', $data);
+        $this->load->view('include/navbar', $data);
+        $this->load->view('users/register_verify_view');
+        $this->load->view('include/footer');
+    }
+
+    // Register verify Code Function
+    public function verify_code(){
+        $this->form_validation->set_rules('code', 'Code', 'required|callback_code_check', array(
+            'required' => "This field must not be empty",
+            'code_check' => 'Code does not match!'
+        ));
+        // Form Validation
+        if (!$this->form_validation->run()){
+            $this->verify(); 
+        }else{
+            $session_verify = array(
+                'email' => $this->session->userdata('email'),
+                'auth' => 'TRUE'
+            );
+            $this->session->set_flashdata($session_verify);  
+            redirect('Auth');
+        }
+    }
+    // Confirm Current Password Function
+    public function code_check($str) {
+        $str = $this->input->post('code');
+        $code = $this->session->userdata('code');
+        if ($str == $code)
+            return TRUE;
+        return FALSE;
+    }
+
+    // Register Resend Function
+    public function resend(){
+        $this->session->keep_flashdata(array('email', 'code'));
+        // Email config
+        $config_email = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_port' => 465,
+            'smtp_user' => $this->config->item('email'),
+            'smtp_pass' => $this->config->item('password'),
+            'smtp_crypto' => 'ssl',
+            'mailtype' => 'html',
+            'smtp_timeout' => '4',
+            'charset' => 'iso-8859-1',
+            'newline' => "\r\n",
+            'wordwrap' => TRUE
+        );
+        $this->email->initialize($config_email);
+        
+        $this->email->from('noreply@email.com', 'Go Shopping');
+        $this->email->to($this->session->userdata('email'));            
+        $this->email->subject('Verify Email Address');
+
+        $message = '<body style="background-color:#FFFFFF;">';
+        $message .= '<center><div class="navbar" style="background-color:#050038; overflow: hidden;"><img src="https://i.imgur.com/lsxEtnQ.png" style="width:105px; height: 100px;"></div></center>';
+        $message .= '<center><h3>Go Shopping Mods Verification</h3></center>';
+        $message .= '<h3>You have entered your email at Go Shopping Mods to register a new account. So we can get you started, please enter the code below on the signup page:</h3>';
+        $message .= '<center><h1>'. $this->session->userdata('code') .'</h1></center>';
+        $message .= '<h3>We look forward to you joining our community!</p>';
+        $message .= '<h3>If you did not attempt to register an account, please ignore this email.</p>';
+        
+        $this->email->message($message);
+        
+        if ($this->email->send()){
+            redirect('Register/verify');
+        }else{
+            echo $this->email->print_debugger();
+        }
     }
 }

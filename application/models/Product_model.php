@@ -14,5 +14,12 @@ class Product_model extends CI_Model {
         $result = $query->result();
         return $result;
     }
+
+    // Get Product Detail (Add Cart Module)
+    public function get_product_detail($product){
+        $query = $this->db->get_where('table_product', array('product_id' => $product));
+        $result = $query->result();
+        return $result;
+    }
 }
 ?>
