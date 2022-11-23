@@ -20,7 +20,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= site_url('Order/checkout/'); ?>" class="btn fw-bold">
+                        <a href="<?= site_url('Order/cart/'); ?>" class="btn fw-bold">
                             <i class="fa-solid fa-cart-shopping"></i>
                             My Cart                            
                             <?php if (!$order_count == 0): ?>
@@ -41,11 +41,6 @@
                     <li class="nav-item">
                         <a href="" class="btn fw-bold"><i class="fa-solid fa-cart-shopping"></i> Your Cart</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="<?= site_url('Admin'); ?>" class="btn fw-bold"> Admin</a>
-                    </li>  
-
-                    
                 <?php endif; ?>
             </ul>
         </div>

@@ -44,5 +44,41 @@ class Users_model extends CI_Model {
     public function update_user($id, $data) {
         $this->db->update('table_user', $data, array('user_id' => $id));
     }
+
+    // User Check Balance (User Module [Add Balance])
+    public function user_check_balance($data) {
+        extract($data);
+        $this->db->select('user_balance')
+                ->from('table_user')
+                ->where('user_username', $user_username);
+        $query = $this->db->get();
+        if($query->row()){
+            return $query->row();
+        }else{
+            return NULL;
+        }
+    }
+
+    // User Update Balance (User Module [Add Balance])
+    public function user_update_balance($order){
+        extract($order);
+        $this->db->where(array(
+            'user_username' => $user_username
+        ));
+        $this->db->update('table_user', $order); 
+    }
+
+    // User Check Balance (User Module [Add Balance])
+    public function user_current_balance($username) {
+        $this->db->select('user_balance')
+                ->from('table_user')
+                ->where('user_username', $username);
+        $query = $this->db->get();
+        if($query->row()){
+            return $query->row();
+        }else{
+            return NULL;
+        }
+    }
 }
 ?>

@@ -61,11 +61,4 @@ class Homepage extends CI_Controller {
         $this->load->view('category/category_view', $data);
         $this->load->view('include/footer', $data);
     }
-
-    public function payment(){
-        $this->load->view('include/header');
-        $this->load->view('include/navbar');
-        $this->load->view('checkout/payment');
-        $this->load->view('include/footer');
-    }
 };

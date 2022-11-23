@@ -41,16 +41,29 @@ class Login extends CI_Controller {
         else{
             $account = $this->userdb->login_verification($login, $password);
             if($account){
-                $session_login = array(
-                    'id' => $account->user_id,
-                    'login_username' => $account->user_username,
-                    'login_email' => $account->user_email,
-                    'login_password' => $account->user_password,
-                    'login_status' => $account->user_status,
-                    'login_state' => 'ACTIVE'   
-                );
-                $this->session->set_userdata($session_login);
-                redirect('Homepage');
+                if ($account->user_status == 'USER') {
+                    $session_login = array(
+                        'id' => $account->user_id,
+                        'login_username' => $account->user_username,
+                        'login_email' => $account->user_email,
+                        'login_password' => $account->user_password,
+                        'login_status' => $account->user_status,
+                        'login_state' => 'ACTIVE'   
+                    );
+                    $this->session->set_userdata($session_login);
+                    redirect('Homepage');
+                } else {
+                    $session_login = array(
+                        'id' => $account->user_id,
+                        'login_username' => $account->user_username,
+                        'login_email' => $account->user_email,
+                        'login_password' => $account->user_password,
+                        'login_status' => $account->user_status,
+                        'login_state' => 'ACTIVE'   
+                    );
+                    $this->session->set_userdata($session_login);
+                    redirect('Admin');
+                }
             }else{
                 $data['error'] = 'Login credentials are not correct.';
                 $data['title'] = "Log In";

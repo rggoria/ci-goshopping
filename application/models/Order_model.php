@@ -112,7 +112,30 @@ class Order_model extends CI_Model {
             'user_username' => $user_username
         ));
         $this->db->update('table_order', $order);
-        redirect('Order/checkout/'.$user_username);
+        redirect('Order/cart/');
+    }
+
+    // Get Count Total Order (Profile Module [Total Order])
+    public function get_count_total_order($username){
+        $query = $this->db->from ('table_order')
+            ->where(array(
+                'user_username' => $username
+            ))
+            ->get();
+        if($query->num_rows() == 0) {
+            return NULL;
+        } else {
+            return $query->num_rows;
+        };
+    }
+
+    // Success Order (Checkout Module [Success Order])
+    public function success_order($username){
+        $this->db->where(array(            
+            'user_username' => $username,
+            'order_status' => 'PENDING',
+        ));
+        $this->db->update('table_order', array('order_status' => 'SUCCESSFULL'));
     }
 }
 ?>

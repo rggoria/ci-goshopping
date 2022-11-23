@@ -31,7 +31,7 @@
                 </div>                         
             </div>
             <div class="d-flex justify-content-around">
-                <a class="btn btn-primary m-2" href="<?php echo site_url('Order/checkout/') ?>" role="button">Go Back</a>
+                <a class="btn btn-primary m-2" href="<?php echo site_url('Order/cart/') ?>" role="button">Go Back</a>
                 <button type="submit" id="submitBtn" class="btn btn-primary m-2" disabled>Update Order</button>
             </div>
         <?= form_close(); ?>

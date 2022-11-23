@@ -15,11 +15,30 @@ class Admin extends CI_Controller {
         $this->load->library(array('form_validation', 'pagination', 'upload', 'session'));
     }
     //LOADS THE ADMIN PAGE
-    public function adminpage(){
-        $this->load->view('include/header');
-        $this->load->view('include/navbar');
-        $this->load->view('admin/Admin_page');
-        $this->load->view('include/footer');
+    public function index(){
+        $data['title'] = "GoShopping: Admin";
+
+        $this->load->view('include/header', $data);
+        $this->load->view('admin/admin_page_view', $data);
+        $this->load->view('include/footer', $data);
+    }
+
+    // Add User (Admin Module)
+    public function add_user(){
+        $data['title'] = "GoShopping: Admin";
+
+        $this->load->view('include/header', $data);
+        $this->load->view('admin/add_user_view', $data);
+        $this->load->view('include/footer', $data);
+    }
+
+    // Add Product (Admin Module)
+    public function add_product(){
+        $data['title'] = "GoShopping: Admin";
+
+        $this->load->view('include/header', $data);
+        $this->load->view('admin/add_product_view', $data);
+        $this->load->view('include/footer', $data);
     }
 
 }
