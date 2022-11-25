@@ -137,5 +137,25 @@ class Order_model extends CI_Model {
         ));
         $this->db->update('table_order', array('order_status' => 'SUCCESSFULL'));
     }
+
+    // Admin Order Count (Admin Module [Order Count])
+    public function admin_order_count(){
+        $query = $this->db->from('table_order')->get();
+        if($query->num_rows() == 0) {
+            return 0;
+        } else {
+            return $query->num_rows;            
+        };
+    }
+
+    // Admin Order List (Admin Module [Order List])
+    public function admin_order_list(){
+        $query = $this->db->from('table_order')->get();
+        if($query->result() == NULL) {
+            return NULL;
+        } else {
+            return $query->result();
+        };
+    }
 }
 ?>

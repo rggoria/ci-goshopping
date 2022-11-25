@@ -80,5 +80,47 @@ class Users_model extends CI_Model {
             return NULL;
         }
     }
+
+    // Admin User Count (Admin Module [User Count])
+    public function admin_user_count(){
+        $query = $this->db->from('table_user')->get();
+        if($query->num_rows() == 0) {
+            return 0;
+        } else {
+            return $query->num_rows;            
+        };
+    }
+
+    // Admin User List (Admin Module [User List])
+    public function admin_user_list(){
+        $query = $this->db->from('table_user')->get();
+        if($query->result() == NULL) {
+            return NULL;
+        } else {
+            return $query->result();
+          
+        };
+    }
+
+    // Update User (Admin Module [User List])
+    public function admin_update_user($data){
+        extract($data);
+        $this->db->where(array(
+            'user_username' => $user_username
+        ));
+        $this->db->update('table_user', $data); 
+    }
+    
+    // Admin Disable User (Admin Module [User List])
+    public function admin_disable_user($id){
+        $this->db->where('user_id', $id);
+        $this->db->update('table_user', array('user_status' => 'DISABLE')); 
+    }
+
+    // Admin Activate User (Admin Module [User List])
+    public function admin_activate_user($id){
+        $this->db->where('user_id', $id);
+        $this->db->update('table_user', array('user_status' => 'USER')); 
+    }
 }
 ?>

@@ -21,13 +21,13 @@
     <div class="card-body py-5 px-md-5 ">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-4">
-          <h2 class="fw-bold mb-5">Add A User</h2>
-          <?php echo form_open('Admin/add_validation'); ?>
+          <h2 class="fw-bold mb-5">Edit A User</h2>
+          <?php echo form_open('Admin/edit_validation/'.$user->user_id); ?>
             <div class="form-outline mb-4">
               <div class="row">              
                 <div class="input-group">
                   <span class="input-group-text">@</span>
-                  <input type="text" name="username" class="form-control" placeholder="Username">
+                  <input type="text" name="username" class="form-control bg-white" value="<?= $user->user_username; ?>" readonly>
                 </div>
                 <?php if(form_error('username')):?>
                   <small class="text-danger fw-bold fst-italic"><?= form_error('username'); ?></small>
@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                   <div class="input-group">
                     <span class="input-group-text">@</span>
-                    <input type="text" name="firstname" class="form-control" placeholder="Firstname">
+                    <input type="text" name="firstname" class="form-control bg-white" value="<?= $user->user_firstname; ?>">
                   </div>
                   <?php if(form_error('firstname')):?>
                     <small class="text-danger fw-bold fst-italic"><?= form_error('firstname'); ?></small>
@@ -50,7 +50,7 @@
                 <div class="col-md-6 mb-4">
                   <div class="input-group">
                     <span class="input-group-text">@</span>
-                    <input type="text" name="lastname" class="form-control" placeholder="Lastname">
+                    <input type="text" name="lastname" class="form-control" value="<?= $user->user_firstname; ?>">
                   </div>
                   <?php if(form_error('lastname')):?>
                     <small class="text-danger fw-bold fst-italic"><?= form_error('lastname'); ?></small>
@@ -63,7 +63,7 @@
               <!-- Email input -->
               <div class="input-group">
                 <span class="input-group-text">@</span>
-                <input type="text" name="email" class="form-control" placeholder="Email">
+                <input type="text" name="email" class="form-control bg-white" value="<?= $user->user_email; ?>" readonly>
               </div>
               <?php if(form_error('email')):?>
                 <small class="text-danger fw-bold fst-italic"><?= form_error('email'); ?></small>
@@ -74,7 +74,7 @@
               <!-- Password input -->
               <div class="input-group">
                 <span class="input-group-text">@</span>
-                <input type="text" name="password" class="form-control" placeholder="Password">
+                <input type="text" name="password" class="form-control" value="<?= $user->user_password; ?>">
               </div>
               <?php if(form_error('password')):?>
                 <small class="text-danger fw-bold fst-italic"><?= form_error('password'); ?></small>
@@ -84,7 +84,7 @@
             </div>
             <!-- Submit button -->
             <a href="<?= site_url('Admin') ?>" class="btn btn-danger btn-block mb-4 me-5" type="button">Go Back</a>
-            <button type="submit" class="btn btn-success btn-block mb-4">Add User</button>
+            <button type="submit" class="btn btn-success btn-block mb-4">Update User</button>
           <?php form_close(); ?>
         </div>
       </div>

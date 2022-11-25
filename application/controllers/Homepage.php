@@ -17,23 +17,27 @@ class Homepage extends CI_Controller {
         $this->load->library(array('form_validation', 'pagination', 'upload', 'session'));
     }
     public function index() {
-        // Setup Data
-        $data['title'] = "GoShopping: Homepage";
-
-        // My Cart        
-        $username = $this->session->userdata('login_username');
-        $count = $this->orderdb->get_order_count($username);
-        if($count == NULL) {
-            $data['order_count'] = 0;            
+        if ($this->session->userdata('login_status') == 'ADMIN') {
+            redirect('Admin');
         } else {
-            $data['order_count'] = $count; 
-        }        
-        
-        // Load view file        
-        $this->load->view('include/header', $data);
-        $this->load->view('include/navbar', $data);
-        $this->load->view('forums/homepage_view', $data);
-        $this->load->view('include/footer', $data);
+            // Setup Data
+            $data['title'] = "GoShopping: Homepage";
+
+            // My Cart        
+            $username = $this->session->userdata('login_username');
+            $count = $this->orderdb->get_order_count($username);
+            if($count == NULL) {
+                $data['order_count'] = 0;            
+            } else {
+                $data['order_count'] = $count; 
+            }        
+            
+            // Load view file        
+            $this->load->view('include/header', $data);
+            $this->load->view('include/navbar', $data);
+            $this->load->view('forums/homepage_view', $data);
+            $this->load->view('include/footer', $data);
+        }
     }
     
     public function category($product) {

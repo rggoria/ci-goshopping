@@ -21,5 +21,25 @@ class Product_model extends CI_Model {
         $result = $query->result();
         return $result;
     }
+
+    // Admin Product Count (Admin Module [Product Count])
+    public function admin_product_count(){
+        $query = $this->db->from('table_product')->get();
+        if($query->num_rows() == 0) {
+            return 0;
+        } else {
+            return $query->num_rows;            
+        };
+    }
+
+    // Admin Product List (Admin Module [Product List])
+    public function admin_product_list(){
+        $query = $this->db->from('table_product')->get();
+        if($query->result() == NULL) {
+            return NULL;
+        } else {
+            return $query->result();
+        };
+    }
 }
 ?>

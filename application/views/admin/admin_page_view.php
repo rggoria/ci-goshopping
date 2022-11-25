@@ -44,7 +44,7 @@
                 </li>
                 <hr>
                 <li class="mt-5">
-                    <a href="" class="nav-link px-0 align-middle">
+                    <a href="<?= site_url('Admin/logout_admin'); ?>" class="nav-link px-0 align-middle">
                         <i class="fa-solid fa-right-from-bracket">
                             <span class="ms-1 d-none d-sm-inline">
                                 Logout</span>
@@ -71,7 +71,7 @@
                 <div class="p-4 text-black" style="background-color: #f8f9fa;">
                     <div class="d-flex justify-content-end text-center py-1">
                         <div>
-                            <p class="mb-1 h5">253</p>
+                            <p class="mb-1 h5"><?= $user_count; ?></p>
                             <p class="small text-muted mb-0">Total Number of Users</p>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                 <div class="p-4 text-black" style="background-color: #f8f9fa;">
                     <div class="d-flex justify-content-end text-center py-1">
                         <div>
-                            <p class="mb-1 h5">253</p>
+                            <p class="mb-1 h5"><?= $product_count; ?></p>
                             <p class="small text-muted mb-0">Total Number of Products</p>
                         </div>
                     </div>
@@ -107,8 +107,8 @@
                 <div class="p-4 text-black" style="background-color: #f8f9fa;">
                     <div class="d-flex justify-content-end text-center py-1">
                         <div>
-                            <p class="mb-1 h5">253</p>
-                            <p class="small text-muted mb-0">Total Number of Users</p>
+                            <p class="mb-1 h5"><?= $order_count; ?></p>
+                            <p class="small text-muted mb-0">Total Number of Orders</p>
                         </div>
                     </div>
                 </div>
@@ -131,17 +131,28 @@
                         <caption class="ms-2">End of list of users...</caption>
                         <thead>
                             <tr>
-                                <th scope="col">Product Category</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Price</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">User Email</th>
+                                <th scope="col">User Status</th>
+                                <th scope="col">User Command</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Meat</th>
-                                <td>Tender Chicken (Whole)</td>
-                                <td>PHP 675/kilo</td>
-                            </tr>
+                            <?php foreach($user_list as $user): ?>
+                                <tr>
+                                    <th scope="row"><?= $user->user_username; ?></th>
+                                    <td><?= $user->user_email; ?></td>
+                                    <td><?= $user->user_status; ?></td>
+                                    <td class="d-flex justify-content-start">
+                                        <a href="<?= site_url('Admin/edit_user/'.$user->user_id) ?>" class="btn btn-warning mx-1" type="button">Edit</a>
+                                        <?php if ($user->user_status == "USER"): ?>
+                                            <a href="<?= site_url('Admin/disable_user/'.$user->user_id) ?>" class="btn btn-danger mx-1" type="button">Disabled</a>
+                                        <?php else: ?>
+                                            <a href="<?= site_url('Admin/activate_user/'.$user->user_id) ?>" class="btn btn-primary mx-1" type="button">Activate</a>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>                                
+                            <?php endforeach; ?>                            
                         </tbody>
                     </table>
                 </div>
@@ -161,17 +172,19 @@
                         <caption class="ms-2">End of list of products...</caption>
                         <thead>
                             <tr>
-                                <th scope="col">Product Category</th>
                                 <th scope="col">Product Name</th>
-                                <th scope="col">Price</th>
+                                <th scope="col">Product Price</th>
+                                <th scope="col">Product </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Meat</th>
-                                <td>Tender Chicken (Whole)</td>
-                                <td>PHP 675/kilo</td>
-                            </tr>
+                            <?php foreach($product_list as $product): ?>
+                                <tr>
+                                    <th scope="row"><?= $product->product_name; ?></th>
+                                    <td><?= $product->product_price; ?></td>
+                                    <td><?= $product->product_category; ?></td>
+                                </tr>                                
+                            <?php endforeach; ?> 
                         </tbody>
                     </table>
                 </div>
@@ -184,17 +197,21 @@
                         <caption class="ms-2">End of list of orders...</caption>
                         <thead>
                             <tr>
-                                <th scope="col">Product Category</th>
+                                <th scope="col">Order ID</th>
                                 <th scope="col">Product Name</th>
-                                <th scope="col">Price</th>
+                                <th scope="col">Order Quantity</th>
+                                <th scope="col">Order Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Meat</th>
-                                <td>Tender Chicken (Whole)</td>
-                                <td>PHP 675/kilo</td>
-                            </tr>
+                            <?php foreach($order_list as $order): ?>
+                                <tr>
+                                    <th scope="row"><?= $order->order_id; ?></th>
+                                    <td><?= $order->product_name; ?></td>
+                                    <td><?= $order->order_quantity; ?></td>
+                                    <td><?= $order->order_status; ?></td>
+                                </tr>                                
+                            <?php endforeach; ?> 
                         </tbody>
                     </table>
                 </div>
