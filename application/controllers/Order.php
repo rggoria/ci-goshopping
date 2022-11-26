@@ -207,9 +207,13 @@ class Order extends CI_Controller {
 
         // Current Balance
         $query = $this->transactiondb->transaction_current_balance($username);
-        $data['current_balance'] = $query->user_balance;
-        $data['current_date'] = $query->transaction_date;
-        
+        if ($query == NULL) {
+            $data['current_balance'] = 0;
+            $data['current_date'] = "NaN";
+        } else {
+            $data['current_balance'] = $query->user_balance;
+            $data['current_date'] = $query->transaction_date;
+        }
         $this->load->view('include/header', $data);
         $this->load->view('include/navbar', $data);
         $this->load->view('order/checkout_view', $data);

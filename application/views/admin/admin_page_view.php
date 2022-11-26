@@ -33,21 +33,12 @@
                             <span class="ms-1 d-none d-sm-inline">List of Orders</span>
                         </i>
                     </a>
-                </li>                
-                <li class="mt-5">
-                    <a href="" class="nav-link px-0 align-middle">
-                        <i class="fa-solid fa-users-line">
-                            <span class="ms-1 d-none d-sm-inline">
-                                Total Users</span>
-                        </i>
-                    </a>
                 </li>
-                <hr>
                 <li class="mt-5">
                     <a href="<?= site_url('Admin/logout_admin'); ?>" class="nav-link px-0 align-middle">
                         <i class="fa-solid fa-right-from-bracket">
                             <span class="ms-1 d-none d-sm-inline">
-                                Logout</span>
+                            Logout</span>
                         </i>
                     </a>
                 </li>
@@ -138,21 +129,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($user_list as $user): ?>
+                            <?php if (!$user_list == 0): ?>
+                                <?php foreach($user_list as $user): ?>                             
+                                    <tr>
+                                        <th scope="row"><?= $user->user_username; ?></th>
+                                        <td><?= $user->user_email; ?></td>
+                                        <td><?= $user->user_status; ?></td>
+                                        <td class="d-flex justify-content-start">
+                                            <a href="<?= site_url('Admin/edit_user/'.$user->user_id) ?>" class="btn btn-warning mx-1" type="button">Edit</a>
+                                            <?php if ($user->user_status == "USER"): ?>
+                                                <a href="<?= site_url('Admin/disable_user/'.$user->user_id) ?>" class="btn btn-danger mx-1" type="button">Disabled</a>
+                                            <?php elseif ($user->user_status == "DISABLE"): ?>
+                                                <a href="<?= site_url('Admin/activate_user/'.$user->user_id) ?>" class="btn btn-primary mx-1" type="button">Activate</a>
+                                            <?php else: ?>
+                                                <?php continue; ?>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>                                
+                                <?php endforeach; ?> 
+                            <?php elseif($user_list == 0): ?>
                                 <tr>
-                                    <th scope="row"><?= $user->user_username; ?></th>
-                                    <td><?= $user->user_email; ?></td>
-                                    <td><?= $user->user_status; ?></td>
-                                    <td class="d-flex justify-content-start">
-                                        <a href="<?= site_url('Admin/edit_user/'.$user->user_id) ?>" class="btn btn-warning mx-1" type="button">Edit</a>
-                                        <?php if ($user->user_status == "USER"): ?>
-                                            <a href="<?= site_url('Admin/disable_user/'.$user->user_id) ?>" class="btn btn-danger mx-1" type="button">Disabled</a>
-                                        <?php else: ?>
-                                            <a href="<?= site_url('Admin/activate_user/'.$user->user_id) ?>" class="btn btn-primary mx-1" type="button">Activate</a>
-                                        <?php endif; ?>
+                                    <td colspan="5">
+                                        Empty
                                     </td>
-                                </tr>                                
-                            <?php endforeach; ?>                            
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -174,17 +175,27 @@
                             <tr>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Product Price</th>
-                                <th scope="col">Product </th>
+                                <th scope="col">Product Category</th>
+                                <th scope="col">Product Command</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($product_list as $product): ?>
+                            <?php if (!$product_list == 0): ?>
+                                <?php foreach($product_list as $product): ?>
+                                    <tr>
+                                        <th scope="row"><?= $product->product_name; ?></th>
+                                        <td><?= $product->product_price; ?></td>
+                                        <td><?= $product->product_category; ?></td>
+                                        <td><a href="<?= site_url('Admin/edit_product/'.$product->product_id) ?>" class="btn btn-warning" type="button">Edit</a></td>
+                                    </tr>                                
+                                <?php endforeach; ?>
+                            <?php elseif($product_list == 0): ?>
                                 <tr>
-                                    <th scope="row"><?= $product->product_name; ?></th>
-                                    <td><?= $product->product_price; ?></td>
-                                    <td><?= $product->product_category; ?></td>
-                                </tr>                                
-                            <?php endforeach; ?> 
+                                    <td colspan="3">
+                                        Empty
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -204,14 +215,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($order_list as $order): ?>
+                            <?php if (!$order_list == 0): ?>
+                                <?php foreach($order_list as $order): ?>
+                                    <tr>
+                                        <th scope="row"><?= $order->order_id; ?></th>
+                                        <td><?= $order->product_name; ?></td>
+                                        <td><?= $order->order_quantity; ?></td>
+                                        <td><?= $order->order_status; ?></td>
+                                    </tr>                                
+                                <?php endforeach; ?>
+                            <?php elseif($order_list == 0): ?>
                                 <tr>
-                                    <th scope="row"><?= $order->order_id; ?></th>
-                                    <td><?= $order->product_name; ?></td>
-                                    <td><?= $order->order_quantity; ?></td>
-                                    <td><?= $order->order_status; ?></td>
-                                </tr>                                
-                            <?php endforeach; ?> 
+                                    <td colspan="4">
+                                        Empty
+                                    </td>
+                                </tr>
+                            <?php endif; ?>                           
                         </tbody>
                     </table>
                 </div>

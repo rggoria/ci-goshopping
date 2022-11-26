@@ -11,6 +11,15 @@
                 <div class="text-center">
                     <i class="fa-solid fa-user-circle fa-5x mt-3 mb-3"></i>
                     <h5 class="fs-5 mt-2">Welcome to GoShopping</span></h5>
+                    <?php if ($this->session->flashdata('new')): ?>
+                        <div class="row d-flex justify-content-center mb-2">
+                            <div class="col-lg-4">
+                                <div class="bg-success p-3">
+                                    <h3 class="text-white"><?= $this->session->flashdata('new'); ?></h3>
+                                </div>
+                            </div>
+                        </div>                    
+                    <?php endif; ?>
                 </div>
                 <?php if(isset($error)):?>
                     <div class="form-group">
@@ -19,9 +28,16 @@
                         </div>
                     </div>
                 <?php endif;?>
+                <?php if ($this->session->flashdata('message')): ?>
+                    <div class="row d-flex justify-content-center m-2">                        
+                        <div class="bg-success p-3">
+                            <h1 class="text-white text-center"><?= $this->session->flashdata('message'); ?></h1>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <hr>
-                
-                <div class="mb-3">
+
+                <div class="mb-3">                    
                     <label class="form-label">Username or Email</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
@@ -48,11 +64,10 @@
                         </span>
                     </div>
                     <small class="text-danger fw-bold fst-italic"><?= form_error('password'); ?></small>
-                    <div class="text-end" style="text-decoration: none"><span><a href="">Forgot Password</a></span>
-                        <div class="d-flex align-items-center mb-2"><input name="" type="checkbox" value="" /> <span class="font-weight-bold"> Remember Me</span></div>
-
-                    </div>
                 </div>
+                <div class="text-end">
+                    <a href="<?= site_url('Profile/forget/'); ?>" class="btn btn-dark my-3">Forgot Password</a>
+                </div>                
                 <button type="submit" class="btn btn-dark w-100 mb-3">Login</button>
                 <div class="text-center">
                     Don't have an account? <span><a href="<?= site_url('Register'); ?>">Sign Up Here!</a></span>

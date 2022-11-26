@@ -31,11 +31,15 @@ class Edit extends CI_Controller {
 
             // Load model to fetch data
             $data['users'] = $this->userdb->get_user($this->session->userdata('id'));
-            // Load view file        
-            $this->load->view('include/header', $data);
-            $this->load->view('include/navbar', $data);
-            $this->load->view('users/edit_view', $data);
-            $this->load->view('include/footer', $data);
+            if ($data['users'] == NULL) {
+                redirect('Login');
+            } else {
+                // Load view file        
+                $this->load->view('include/header', $data);
+                $this->load->view('include/navbar', $data);
+                $this->load->view('users/edit_view', $data);
+                $this->load->view('include/footer', $data);
+            }
         }else{            
             redirect('Login');
         }

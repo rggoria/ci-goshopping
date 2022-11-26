@@ -30,8 +30,15 @@ class Homepage extends CI_Controller {
                 $data['order_count'] = 0;            
             } else {
                 $data['order_count'] = $count; 
-            }        
-            
+            }
+
+            $new = $this->productdb->get_latest_product();
+            if ($new == NULL) {
+                $data['new_list'] = 0;
+            } else {
+                $data['new_list'] = $new;
+            }
+
             // Load view file        
             $this->load->view('include/header', $data);
             $this->load->view('include/navbar', $data);

@@ -28,8 +28,8 @@
                             <?php foreach($order_list as $orders): ?>
                                 <tr>                 
                                     <td>
-                                        <div class="d-flex justify-content-center align-items-center">
-                                            <img src='<?= $orders->product_image; ?>' class="rounded-circle" width="150px">
+                                        <div class="d-flex justify-content-center align-items-center">                                        
+                                            <img src='<?= base_url('uploads/images/'.$orders->product_image);?>' class="rounded-circle" width="150px">
                                             <p class="ms-2"><?= $orders->product_name; ?></p>
                                         </div>
                                     </td>

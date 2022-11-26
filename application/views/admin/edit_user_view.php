@@ -17,16 +17,25 @@
         </div>
       </div>
     <?php endif; ?>
+    <?php if ($this->session->flashdata('error')): ?>
+      <div class="row d-flex justify-content-center mb-2">
+        <div class="col-lg-4">
+          <div class="bg-danger p-3">
+            <h1 class="text-white"><?= $this->session->flashdata('error'); ?></h1>
+          </div>
+        </div>
+      </div>
+    <?php endif; ?>
     <i class="fa fa-users fa-light fa-9x"></i>
     <div class="card-body py-5 px-md-5 ">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-4">
           <h2 class="fw-bold mb-5">Edit A User</h2>
-          <?php echo form_open('Admin/edit_validation/'.$user->user_id); ?>
+          <?php echo form_open('Admin/edit_user_validation/'.$user->user_id); ?>
             <div class="form-outline mb-4">
               <div class="row">              
                 <div class="input-group">
-                  <span class="input-group-text">@</span>
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
                   <input type="text" name="username" class="form-control bg-white" value="<?= $user->user_username; ?>" readonly>
                 </div>
                 <?php if(form_error('username')):?>
@@ -37,7 +46,7 @@
 
                 <div class="col-md-6">
                   <div class="input-group">
-                    <span class="input-group-text">@</span>
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
                     <input type="text" name="firstname" class="form-control bg-white" value="<?= $user->user_firstname; ?>">
                   </div>
                   <?php if(form_error('firstname')):?>
@@ -49,7 +58,7 @@
                 
                 <div class="col-md-6 mb-4">
                   <div class="input-group">
-                    <span class="input-group-text">@</span>
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
                     <input type="text" name="lastname" class="form-control" value="<?= $user->user_firstname; ?>">
                   </div>
                   <?php if(form_error('lastname')):?>
@@ -62,7 +71,7 @@
               </div>
               <!-- Email input -->
               <div class="input-group">
-                <span class="input-group-text">@</span>
+                <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
                 <input type="text" name="email" class="form-control bg-white" value="<?= $user->user_email; ?>" readonly>
               </div>
               <?php if(form_error('email')):?>
@@ -73,7 +82,7 @@
 
               <!-- Password input -->
               <div class="input-group">
-                <span class="input-group-text">@</span>
+                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                 <input type="text" name="password" class="form-control" value="<?= $user->user_password; ?>">
               </div>
               <?php if(form_error('password')):?>

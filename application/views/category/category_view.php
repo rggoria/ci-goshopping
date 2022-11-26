@@ -16,7 +16,7 @@
         <?php foreach($category as $product): ?>
             <div class="col-4">
                 <div class="card">
-                    <img src="<?= $product->product_image; ?>" class="card-img-top" alt="...">
+                    <img src="<?= base_url('uploads/images/'.$product->product_image);?>" class="card-img-top">
                     <div class="card-body mt-5 text-center">
                         <h5 class="card-title mt-4"><?= $product->product_name; ?></h5>
                         <p class="card-text"><?= $product->product_description; ?></p>

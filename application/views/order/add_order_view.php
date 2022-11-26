@@ -8,7 +8,7 @@
         <?= form_open('Order/add_cart/'.$product_id);?>
             <div class="card-body row">
                 <div class="col-md-6 p-3 bg-dark text-white">
-                    <img src="<?= $product_image; ?>" class="card-img-top" alt="...">
+                    <img src="<?= base_url('uploads/images/'.$product_image);?>" class="card-img-top">                    
                 </div>
                 <div class="col-md-6 p-3 bg-primary text-white">
                     <div class="row g-3">                        

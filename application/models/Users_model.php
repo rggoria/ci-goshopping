@@ -36,8 +36,12 @@ class Users_model extends CI_Model {
     // Get User (Profile Module [Edit])
     public function get_user($id){
         $query = $this->db->get_where('table_user', array('user_id' => $id));
-        $result = $query->row();
-        return $result;
+        if ($query) {
+            $result = $query->row();
+            return $result;
+        } else {
+            return NULL;
+        }        
     }
 
     // Update User (Profile Module [Update])
@@ -121,6 +125,24 @@ class Users_model extends CI_Model {
     public function admin_activate_user($id){
         $this->db->where('user_id', $id);
         $this->db->update('table_user', array('user_status' => 'USER')); 
+    }
+
+    // Get User Exist (Forget Password [Step 1 Verify Email])
+    public function check_user_exist($email){
+        $query = $this->db->get_where('table_user', array('user_email' => $email));
+        if ($query->row()) {
+            $result = $query->row();            
+            return $result;
+        } else {           
+            return NULL;
+        }    
+    }
+
+    // Update User (Profile Module [Update])
+    public function forget_update_user($data) {
+        extract($data);
+        $this->db->where('user_email', $user_email);
+        $this->db->update('table_user', array('user_password' => $user_password)); 
     }
 }
 ?>

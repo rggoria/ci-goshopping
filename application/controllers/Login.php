@@ -7,7 +7,7 @@ class Login extends CI_Controller {
         parent::__construct();
         // Load the models
         $this->load->model(array(
-            // 'Post_model' => 'postdb',
+            'Order_model' => 'orderdb',
             'Users_model' => 'userdb'
         ));
         // Load the helpers needed
@@ -18,6 +18,15 @@ class Login extends CI_Controller {
     public function index() {
         // Setup Data
         $data['title'] = "GoShopping: Login";
+
+        // My Cart        
+        $username = $this->session->userdata('login_username');
+        $count = $this->orderdb->get_order_count($username);
+        if($count == NULL) {
+            $data['order_count'] = 0;            
+        } else {
+            $data['order_count'] = $count; 
+        } 
 
         // Load view file        
         $this->load->view('include/header', $data);
@@ -41,18 +50,7 @@ class Login extends CI_Controller {
         else{
             $account = $this->userdb->login_verification($login, $password);
             if($account){
-                if ($account->user_status == 'USER') {
-                    $session_login = array(
-                        'id' => $account->user_id,
-                        'login_username' => $account->user_username,
-                        'login_email' => $account->user_email,
-                        'login_password' => $account->user_password,
-                        'login_status' => $account->user_status,
-                        'login_state' => 'ACTIVE'   
-                    );
-                    $this->session->set_userdata($session_login);
-                    redirect('Homepage');
-                } else {
+                if ($account->user_status == 'ADMIN') {
                     $session_login = array(
                         'id' => $account->user_id,
                         'login_username' => $account->user_username,
@@ -63,6 +61,20 @@ class Login extends CI_Controller {
                     );
                     $this->session->set_userdata($session_login);
                     redirect('Admin');
+                } elseif ($account->user_status == 'DISABLE') {
+                    $this->session->set_flashdata('message', 'Sorry this account is disabled for now'); 
+                    $this->index();
+                } else {
+                    $session_login = array(
+                        'id' => $account->user_id,
+                        'login_username' => $account->user_username,
+                        'login_email' => $account->user_email,
+                        'login_password' => $account->user_password,
+                        'login_status' => $account->user_status,
+                        'login_state' => 'ACTIVE'   
+                    );
+                    $this->session->set_userdata($session_login);
+                    redirect('Homepage');
                 }
             }else{
                 $data['error'] = 'Login credentials are not correct.';

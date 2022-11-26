@@ -12,8 +12,8 @@
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
     </div>
 
-    <div class="carousel-inner">
-        <div class="carousel-item active pb-5 " data-bs-interval="10000">
+    <div class="carousel-inner text-center">
+        <div class="carousel-item active pb-5" data-bs-interval="10000">
             <!-- First Slide Start -->
             <div class="container mt-3 mb-5 pb-5">
                 <div class="row">
@@ -33,7 +33,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">Poultry</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <?php $product = "poultry" ?>
                                 <a href="<?= site_url('Homepage/category/Poultry');?>" class="btn btn-white border-dark">Go to Poultry Category</a>
                             </div>
                         </div>
@@ -51,8 +50,8 @@
                 </div>
             </div>
             <div class="carousel-caption d-none d-md-block">
-            <h5>Fifth slide label</h5>
-                <p>Representative category content for the fifth slide.</p>
+            <h5>First slide label</h5>
+                <p>Representative category content for the first slide.</p>
             </div>
             <!-- First Slide End -->
         </div>
@@ -291,9 +290,12 @@
         </div>
         <div class="col-6">
             <div class="card">
-                <img class="card-img-top" src="https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2014/06/thumb_720_450_dreamstime_xl_34122178-Custom.jpg" alt="Card image cap">
+                <div class="card-header">
+                    <?= $new_list->product_name; ?>
+                </div>
+                <img class="card-img-top" src="<?= base_url('uploads/images/'.$new_list->product_image);?>" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text">This product has just arrived today, fresh out of high quality stock!</p>
+                    <p class="card-text"><?= $new_list->product_description; ?></p>
                 </div>
             </div>
         </div>

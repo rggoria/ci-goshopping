@@ -63,8 +63,8 @@ class Admin extends CI_Controller {
         redirect('Homepage');
     }
 
-    // Add Validation
-    public function add_validation() {
+    // Add User Validation Validation
+    public function add_user_validation() {
         $required = "This field must not be empty";
         $regex_match = "Invalid input. Try another.";
 
@@ -129,7 +129,7 @@ class Admin extends CI_Controller {
     }
 
     // Edit Validation
-    public function edit_validation($id) {
+    public function edit_user_validation($id) {
         $required = "This field must not be empty";
         $regex_match = "Invalid input. Try another.";
 
@@ -149,11 +149,9 @@ class Admin extends CI_Controller {
         ));
         
         // Form Validation
-        if (!$this->form_validation->run()) {
-            $data['title'] = "GoShopping: Admin";
-            $this->load->view('include/header', $data);
-            $this->load->view('admin/edit_user_view', $data);
-            $this->load->view('include/footer', $data);           
+        if (!$this->form_validation->run()) {  
+            $this->session->set_flashdata('error', 'Failed to update account');          
+            redirect('Admin/edit_user/'.$id);            
         } else {
             // Get data from inputs
             $data['user_firstname'] = $this->input->post('firstname');        
@@ -177,6 +175,101 @@ class Admin extends CI_Controller {
     public function activate_user($id){
         $this->userdb->admin_activate_user($id);
         redirect('Admin');
+    }
+
+    // Add Product Validation
+    public function add_product_validation() {
+        $required = "This field must not be empty";
+        $regex_match = "Invalid input. Try another.";
+
+        $this->form_validation->set_rules('productname', 'Product Name', 'required', array(
+            'required' => $required
+        ));
+
+        $this->form_validation->set_rules('productdescription', 'Product Description', 'required', array(
+            'required' => $required
+        ));
+
+        $this->form_validation->set_rules('productprice', 'Product Category', 'required', array(
+            'required' => $required,
+        ));       
+        
+        // Form Validation
+        if (!$this->form_validation->run()) {            
+            $data['title'] = "GoShopping: Admin";
+            $this->load->view('include/header', $data);
+            $this->load->view('admin/add_product_view', $data);
+            $this->load->view('include/footer', $data);           
+        } else {     
+            $this->input->post('firstname');          
+            $image_config = array(
+                'image_library' => 'GD2',            
+                'upload_path' => './uploads/images/',
+                'allowed_types' => 'jpg|jpeg|png',
+                'file_name' => $this->input->post('productname')
+            );        
+            $this->load->library('upload', $image_config);
+            //Intialize
+            $this->upload->initialize($image_config);
+    
+            if (!$this->upload->do_upload('productimage')) {
+                $this->session->set_flashdata('error', $this->upload->display_errors());
+                redirect('Admin/add_product/');
+            } else {
+                $uploadData = $this->upload->data();
+
+                // Get data from inputs
+                $data['product_image'] = $uploadData['file_name'];        
+                $data['product_name'] = $this->input->post('productname');
+                $data['product_description'] = $this->input->post('productdescription');
+                $data['product_price'] = $this->input->post('productprice');
+                $data['product_category'] = $this->input->post('productcategory');
+                $this->productdb->create_product($data); 
+
+                $this->session->set_flashdata('success', 'Product Successfully created');  
+                redirect('Admin/add_product');
+                
+            }
+        }
+    }
+
+    // Edit Product (Admin Module)
+    public function edit_product($id){
+        $data['title'] = "GoShopping: Admin";
+
+        $data['product'] = $this->productdb->get_product($id);
+
+        $this->load->view('include/header', $data);
+        $this->load->view('admin/edit_product_view', $data);
+        $this->load->view('include/footer', $data);
+    }
+
+    // Edit Validation
+    public function edit_product_validation($id) {
+        $required = "This field must not be empty";     
+
+        $this->form_validation->set_rules('productdescription', 'Product Description', 'required', array(
+            'required' => $required
+        ));
+
+        $this->form_validation->set_rules('productprice', 'Product Category', 'required', array(
+            'required' => $required,
+        )); 
+
+        // Form Validation
+        if (!$this->form_validation->run()) {
+            $this->session->set_flashdata('error', 'Failed to update product');          
+            redirect('Admin/edit_product/'.$id);          
+        } else {
+            // Get data from inputs
+            $data['product_name'] = $this->input->post('productname');
+            $data['product_description'] = $this->input->post('productdescription');
+            $data['product_price'] = $this->input->post('productprice');         
+            $this->productdb->admin_update_product($data);
+
+            $this->session->set_flashdata('success', 'Account successfully updated');  
+            redirect('Admin/edit_product/'.$id);
+        }
     }
 }
 ?>
