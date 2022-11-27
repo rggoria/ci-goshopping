@@ -50,9 +50,16 @@ class Homepage extends CI_Controller {
     public function category($product) {
         // Setup Data
         $data['title'] = "GoShopping: Product: $product";
-        
+
+        // Conversion url space
+        if (str_contains($product, '%20')) {
+            $convert = str_replace('%20',' ',$product);
+        } else {
+            $convert = ucfirst($product);
+        }
+
         // Section Header
-        $data['section'] = $product;
+        $data['section'] = $convert;
         
         // My Cart        
         $username = $this->session->userdata('login_username');
@@ -64,12 +71,36 @@ class Homepage extends CI_Controller {
         }  
 
         // Fetch Data
-        $data['category'] = $this->productdb->get_category_product($product);
+        $data['category'] = $this->productdb->get_category_product($convert);
 
         // Load view file        
         $this->load->view('include/header', $data);
         $this->load->view('include/navbar', $data);
         $this->load->view('category/category_view', $data);
+        $this->load->view('include/footer', $data);
+    }
+
+    // Arrival (Homepage [New Arrival])
+    public function arrival() {
+        // Setup Data
+        $data['title'] = "GoShopping: New Arrival";
+        
+        // My Cart        
+        $username = $this->session->userdata('login_username');
+        $count = $this->orderdb->get_order_count($username);
+        if($count == NULL) {
+            $data['order_count'] = 0;
+        } else {
+            $data['order_count'] = $count; 
+        }  
+
+        // Fetch Data
+        $data['arrival'] = $this->productdb->get_arrival_product();
+
+        // Load view file        
+        $this->load->view('include/header', $data);
+        $this->load->view('include/navbar', $data);
+        $this->load->view('category/new_arrival_view', $data);
         $this->load->view('include/footer', $data);
     }
 };

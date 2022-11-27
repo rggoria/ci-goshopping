@@ -53,7 +53,7 @@
             <div class="card col-md-4">
                 <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
                     <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                        <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                        <img src="<?= base_url('uploads/private/user_icon.png');?>" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                     </div>
                     <div class="ms-3" style="margin-top: 130px;">
                         <h5>Users</h5>
@@ -71,7 +71,7 @@
             <div class="card col-md-4">
                 <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
                     <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/81/81960.png" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                        <img src="<?= base_url('uploads/private/product_icon.png');?>" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                     </div>
                     <div class="ms-3" style="margin-top: 130px;">
                         <h5>Products</h5>
@@ -89,7 +89,7 @@
             <div class="card col-md-4">
                 <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
                     <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3496/3496156.png" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                        <img src="<?= base_url('uploads/private/order_icon.png');?>" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                     </div>
                     <div class="ms-3" style="margin-top: 130px;">
                         <h5>Order</h5>
@@ -150,8 +150,15 @@
                             <?php elseif($user_list == 0): ?>
                                 <tr>
                                     <td colspan="5">
-                                        Empty
-                                    </td>
+                                        <div class="card d-flex justify-content-center p-3">
+                                            <div class="text-center">
+                                                <h1>You have no users yet.</h1>
+                                                <div class="d-flex justify-content-center">                                                        
+                                                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_no386ede.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                                </div>                    
+                                            </div>
+                                        </div>                                                                    
+                                    </td>                                    
                                 </tr>
                             <?php endif; ?>
                         </tbody>
@@ -191,9 +198,16 @@
                                 <?php endforeach; ?>
                             <?php elseif($product_list == 0): ?>
                                 <tr>
-                                    <td colspan="3">
-                                        Empty
-                                    </td>
+                                    <td colspan="4">
+                                        <div class="card d-flex justify-content-center p-3">
+                                            <div class="text-center">
+                                                <h1>You have no products yet.</h1>
+                                                <div class="d-flex justify-content-center">                                                        
+                                                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_o75swrf7.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                                </div>                    
+                                            </div>
+                                        </div>                                                                    
+                                    </td> 
                                 </tr>
                             <?php endif; ?>
                         </tbody>
@@ -225,10 +239,17 @@
                                     </tr>                                
                                 <?php endforeach; ?>
                             <?php elseif($order_list == 0): ?>
-                                <tr>
+                                <tr>                                    
                                     <td colspan="4">
-                                        Empty
-                                    </td>
+                                        <div class="card d-flex justify-content-center p-3">
+                                            <div class="text-center">
+                                                <h1>You have no orders yet.</h1>
+                                                <div class="d-flex justify-content-center">                                                        
+                                                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_efx0lbm9.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                                </div>                    
+                                            </div>
+                                        </div>                                                                    
+                                    </td> 
                                 </tr>
                             <?php endif; ?>                           
                         </tbody>

@@ -12,42 +12,44 @@
 <div class="card py-5 px-md-5 shadow-5-strong text-center">  
   <i class="fa fa-users fa-light fa-9x"></i>
   <div class="card-body">
-    <h2 class="fw-bold mb-3">Add A Product</h2>    
-    <?php if ($this->session->flashdata('success')): ?>
-      <div class="d-flex justify-content-center m-2">
-        <div class="col-lg-4">
-          <div class="bg-success p-3">
-            <h1 class="text-white"><?= $this->session->flashdata('success'); ?></h1>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
     <?php if ($this->session->flashdata('error')): ?>
-      <div class="d-flex justify-content-center m-2">
-        <div class="col-lg-4">
-          <div class="bg-success p-3">
-            <h1 class="text-white"><?= $this->session->flashdata('error'); ?></h1>
-          </div>
+      <div class="card d-flex justify-content-center p-1 m-3">
+        <div class="text-center">
+          <div class="d-flex justify-content-center">                                
+            <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_bdnjxekx.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+            <h1 class="align-self-center"><?= $this->session->flashdata('error'); ?></h1>
+          </div>                    
         </div>
       </div>
-    <?php endif; ?>
+    <?php elseif ($this->session->flashdata('success')): ?>
+      <div class="card d-flex justify-content-center p-1 m-3">
+        <div class="text-center">
+          <div class="d-flex justify-content-center">                                
+            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_gaxn5gzy.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+            <h1 class="align-self-center"><?= $this->session->flashdata('success'); ?></h1>
+          </div>                    
+        </div>
+      </div>
+    <?php else: ?>
+      <h2 class="fw-bold mb-5">Add A Product</h2>
+    <?php endif; ?>    
     <?= form_open_multipart('Admin/add_product_validation'); ?>
       <div class="row d-flex justify-content-center">    
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="card m-2">
             <div class="card-header">
               <h1>Preview Image</h1>
             </div>
             <div class="card-body">
-              <img id="preview" src="<?= base_url('uploads/images/product_icon.png');?>" class="card-img" height="400" width="200">
+              <img id="preview" src="<?= base_url('uploads/private/product.png');?>" class="card-img" height="300" width="200">
             </div>
             <div class="card-footer">
-              <input class="form-control form-control-lg" name="productimage" type="file" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])">
-            </div>      
+              <input class="form-control form-control-lg" name="productimage" type="file" accept="image/png, image/jpg, image/jpeg" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])">
+            </div>
           </div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="card m-2">
             <div class="card-header">
               <h1>Product Details</h1>

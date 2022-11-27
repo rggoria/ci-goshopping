@@ -62,10 +62,9 @@ class Edit extends CI_Controller {
 
         // Form Validation for changing password
         if(!$this->form_validation->run()){
-            // Success
-            $data['failed'] = "Update user failed.";
-            $this->load->view('include/header', $data);
-            $this->index($data);
+            // Error
+            $this->session->set_flashdata('error', 'Profile details failed to update');
+            $this->index();
         }else{
             $data['user_firstname'] = $this->input->post('firstname');
             $data['user_middlename'] = $this->input->post('middlename');          
@@ -78,9 +77,59 @@ class Edit extends CI_Controller {
             $data['user_zipcode'] = $this->input->post('zipcode');
             $this->userdb->update_user($id, $data);
             // Success
-            $data['success'] = "Update user success.";
-            $this->load->view('include/header', $data);
-            $this->index($data);
+            $this->session->set_flashdata('success', 'Profile details successfully updated');
+            redirect('Edit');
+        }
+    }
+
+    public function upload($username){                 
+        $image_config = array(
+            'image_library' => 'GD2',            
+            'upload_path' => './uploads/images/profile',
+            'allowed_types' => 'jpg|jpeg|png',
+            'file_name' => $username
+        );
+        $this->load->library('upload', $image_config);
+        //Intialize
+        $this->upload->initialize($image_config);
+
+        if (!$this->upload->do_upload('userimage')) {
+            $this->session->set_flashdata('error', $this->upload->display_errors());
+            redirect('Edit');
+        } else {
+            $uploadData = $this->upload->data();
+
+            // Get data from inputs
+            $data['user_username'] = $username;
+            $data['user_image'] = $uploadData['file_name'];
+            $this->userdb->upload_image($data); 
+
+            $this->session->set_flashdata('success', 'Product Successfully created');  
+            redirect('Edit');
+            
+        }
+    }
+
+    //Update Password
+    public function update_password($id){
+        $required = "This field is must not be empty";
+
+        $this->form_validation->set_rules('newpassword', "Confirm Password", 'required|min_length[8]', array (
+            'required' => $required,
+            'min_length' => 'Must contain at least 8 character'
+        ));
+
+        // Form Validation for changing password
+        if(!$this->form_validation->run()){
+            $this->index();
+        }else{            
+            $data['user_id'] = $id;
+            $data['user_password'] = $this->input->post('newpassword'); 
+            $this->userdb->update_password($data);
+            
+            // Success
+            $this->session->set_flashdata('success', 'Password Successfully updated');
+            redirect('Edit');
         }
     }
 }

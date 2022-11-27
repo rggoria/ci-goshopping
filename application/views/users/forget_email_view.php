@@ -18,15 +18,16 @@
                 <div class="text-center">
                     <h6>STEP 1 OF 3</h4>
                     <?php if ($this->session->flashdata('error')): ?>
-                        <div class="row d-flex justify-content-center mb-2">
-                            <div class="col-lg-4">
-                                <div class="bg-danger p-3">
-                                    <h3 class="text-white"><?= $this->session->flashdata('error'); ?></h3>
-                                </div>
+                        <div class="card d-flex justify-content-center p-1 m-3">
+                            <div class="text-center">
+                                <div class="d-flex justify-content-center">                                
+                                    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_bdnjxekx.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                    <h1 class="align-self-center"><?= $this->session->flashdata('error'); ?></h1>
+                                </div>                    
                             </div>
                         </div>
                     <?php else: ?>
-                        <h3>Enter your Email</h3>
+                        <h3 class="m-3">Enter your Email</h3>
                     <?php endif; ?>
                 </div>
 

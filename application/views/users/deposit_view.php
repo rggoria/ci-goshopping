@@ -21,22 +21,26 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    Last Updated: <span><?= $newdateformat = date("D, d M Y h:i:s A", strtotime($current_date));?></span>
+                    <?php if($current_balance == NULL ): ?>
+                        Last Updated: <span>NaN</span>
+                    <?php else: ?>
+                        Last Updated: <span><?= $newdateformat = date("D, d M Y h:i:s A", strtotime($current_date));?></span>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
         <?= form_open('Profile/cash/');?>
-            <label class="form-label text-start">Enter Desire Amount</label>
+            <label class="form-label text-start">Enter Desired Amount</label>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
-                <input type="number" name="cash" min="0" oninput="validity.valid||(value='');" class="form-control">
+                <input type="number" name="cash" min="0" oninput="validity.valid||(value='');" class="form-control" placeholder="Enter your desired amount here...">
             </div>
             <small class="text-danger fw-bold fst-italic"><?php echo form_error('cash') ?></small>
 
             <div class="text-center">
                 <!-- CHECKOUT -->
                 <a class="btn btn-danger m-2" href="<?= site_url('Profile'); ?>">Go Back</a>
-                <button class="btn btn-success m-2" type="submit">Confirm Purchase</button></a>
+                <button class="btn btn-success m-2" type="submit">Confirm Deposit</button></a>
             </div>
         <?= form_close();?>
     </div>

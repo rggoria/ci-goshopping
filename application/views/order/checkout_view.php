@@ -1,26 +1,33 @@
 <section class="bg-dark py-5 text-center text-white container-fluid">
     <h1>Checkout</h1>
 </section>
-<div class="card container p-5 text-center my-5">
+<div class="card container text-center my-3">  
     <?php if ($this->session->flashdata('memo')): ?>
-        <div class="bg-danger p-5">
-            <h1 class="text-white"><?= $this->session->flashdata('memo'); ?></h1>
-            <a class="btn btn-primary m-5 p-3" href="<?= site_url('Profile/deposit'); ?>">Cash-in</a>
-        </div>
-    <?php endif; ?>
+        <div class="p-3 d-flex justify-content-center">
+            <div class="col-md-7">
+                <div class="card-header text-center"> 
+                    <h1><?= $this->session->flashdata('memo'); ?></h1> 
+                </div>
+                <div class="card-body border border-dark">                                     
+                    <div class="d-flex justify-content-center">                                                        
+                        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tpoukxhv.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        <a class="btn btn-primary align-self-center" href="<?= site_url('Profile/deposit'); ?>">Cash-in Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    <?php endif; ?>  
     <div class="row">
     <div class="col-md-6 text-align-center mb-5">
             <div class="card">
                 <div class="card-header">
-                    E-Card:  <?= $order_count; ?>
+                    E-Card
                 </div>
                 <div class="card-body">                
                     <i class="fa fa-money-check-alt fa-10x"></i>
                 </div>
             </div>
-        </div>  
-
-
+        </div>
         
         <div class="col-md-6  text-align-center mb-5 ">
             <div class="card">
@@ -42,7 +49,7 @@
                     </div>
                     <div class="card-body">
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">PHP</span>
+                            <span class="input-group-text">PHP</span>
                             <input type="text" name="total" class="form-control bg-white" value="<?= number_format($total_amount, 2); ?>" readonly>
                         </div>
                     </div>               
@@ -55,7 +62,7 @@
                     </div>
                     <div class="card-body">
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">PHP</span>
+                            <span class="input-group-text">PHP</span>
                             <input type="text" name="current" class="form-control bg-white" value="<?= number_format($current_balance, 2); ?>" readonly>
                         </div>
                     </div>

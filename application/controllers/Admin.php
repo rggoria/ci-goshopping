@@ -151,17 +151,10 @@ class Admin extends CI_Controller {
         // Form Validation
         if (!$this->form_validation->run()) {  
             $this->session->set_flashdata('error', 'Failed to update account');          
-            redirect('Admin/edit_user/'.$id);            
+            $this->edit_user($id);          
         } else {
-            // Get data from inputs
-            $data['user_firstname'] = $this->input->post('firstname');        
-            $data['user_lastname'] = $this->input->post('lastname');
-            $data['user_username'] = $this->input->post('username');
-            $data['user_password'] = $this->input->post('password');
-            $this->userdb->admin_update_user($data);
-
-            $this->session->set_flashdata('success', 'Account successfully updated');  
-            redirect('Admin/edit_user/'.$id);
+            $this->session->set_flashdata('success', 'Account successfully updated');
+            redirect('Admin/edit_user/'.$id);  
         }
     }
 
@@ -180,10 +173,10 @@ class Admin extends CI_Controller {
     // Add Product Validation
     public function add_product_validation() {
         $required = "This field must not be empty";
-        $regex_match = "Invalid input. Try another.";
 
-        $this->form_validation->set_rules('productname', 'Product Name', 'required', array(
-            'required' => $required
+        $this->form_validation->set_rules('productname', 'Product Name', 'required|is_unique[table_product.product_name]', array(
+            'required' => $required,
+            'is_unique' => 'That product name is taken. Try another.'
         ));
 
         $this->form_validation->set_rules('productdescription', 'Product Description', 'required', array(
@@ -195,16 +188,14 @@ class Admin extends CI_Controller {
         ));       
         
         // Form Validation
-        if (!$this->form_validation->run()) {            
-            $data['title'] = "GoShopping: Admin";
-            $this->load->view('include/header', $data);
-            $this->load->view('admin/add_product_view', $data);
-            $this->load->view('include/footer', $data);           
+        if (!$this->form_validation->run()) {
+            $this->session->set_flashdata('error', 'Product failed to create'); 
+            $this->add_product();          
         } else {     
             $this->input->post('firstname');          
             $image_config = array(
                 'image_library' => 'GD2',            
-                'upload_path' => './uploads/images/',
+                'upload_path' => './uploads/images/product/',
                 'allowed_types' => 'jpg|jpeg|png',
                 'file_name' => $this->input->post('productname')
             );        
@@ -214,7 +205,7 @@ class Admin extends CI_Controller {
     
             if (!$this->upload->do_upload('productimage')) {
                 $this->session->set_flashdata('error', $this->upload->display_errors());
-                redirect('Admin/add_product/');
+                $this->add_product();
             } else {
                 $uploadData = $this->upload->data();
 
@@ -226,7 +217,7 @@ class Admin extends CI_Controller {
                 $data['product_category'] = $this->input->post('productcategory');
                 $this->productdb->create_product($data); 
 
-                $this->session->set_flashdata('success', 'Product Successfully created');  
+                $this->session->set_flashdata('success', 'Product successfully created');  
                 redirect('Admin/add_product');
                 
             }

@@ -20,11 +20,23 @@ class Product_model extends CI_Model {
         };
     }
 
-    // Create User (Signup Module)
+    // Get Category Product (Homepage Module)
     public function get_category_product($product){
         $query = $this->db->get_where('table_product', array('product_category' => $product));
         $result = $query->result();
         return $result;
+    }
+
+    // Create User (Homepage Module)
+    public function get_arrival_product(){
+        $query = $this->db->from ('table_product')
+            ->order_by('product_date', 'DESC')
+            ->get();
+        if($query->result() == NULL) {
+            return NULL;         
+        } else {
+            return $query->result();
+        };
     }
 
     // Get Product Detail (Add Cart Module)

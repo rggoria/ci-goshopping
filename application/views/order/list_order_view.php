@@ -5,10 +5,18 @@
     <div class="card-body p-0">
         <div class="card">
             <?php if ($this->session->flashdata('memo')): ?>
-                <div class="bg-success p-5 text-center">
-                    <h1 class="text-white"><?= $this->session->flashdata('memo'); ?></h1>                  
-                </div>
-            <?php endif; ?>
+                <div class="p-5">            
+                    <div class="card-header text-center"> 
+                        <h1><?= $this->session->flashdata('memo'); ?></h1> 
+                    </div>
+                    <div class="card-body border border-dark">                                     
+                        <div class="d-flex justify-content-center">                                                        
+                            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_k6ciq2nn.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                            <span class="align-self-center h1">Thank you for purchasing at GoShopping!</span>
+                        </div>
+                    </div> 
+                </div>  
+            <?php endif; ?>                 
             <!-- Card Body -->
             <div class="table-responsive">
                 <table class="table align-middle mb-0 bg-white text-center">
@@ -28,8 +36,8 @@
                             <?php foreach($order_list as $orders): ?>
                                 <tr>                 
                                     <td>
-                                        <div class="d-flex justify-content-center align-items-center">                                        
-                                            <img src='<?= base_url('uploads/images/'.$orders->product_image);?>' class="rounded-circle" width="150px">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <img src='<?= base_url('uploads/images/product/'.$orders->product_image);?>' class="rounded-circle" height="150px"  width="150px">
                                             <p class="ms-2"><?= $orders->product_name; ?></p>
                                         </div>
                                     </td>
@@ -48,7 +56,14 @@
                         <?php elseif($order_list == 0): ?>
                             <tr>
                                 <td colspan="4">
-                                    Empty
+                                    <div class="card d-flex justify-content-center p-3">
+                                        <div class="text-center">
+                                            <h1>You have no orders yet.</h1>
+                                            <div class="d-flex justify-content-center">                                                        
+                                                <lottie-player src="https://assets4.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                            </div>                    
+                                        </div>
+                                    </div>                                                                    
                                 </td>
                             </tr>
                         <?php endif; ?>                    

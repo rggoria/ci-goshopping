@@ -7,39 +7,54 @@
         <!-- Card body -->       
         <div class="card-body">
             <!-- Card Form -->            
-            <div class="text-center">
-                <i class="fa-solid fa-check-circle fa-5x mt-3 mb-3"></i>
-                <h5 class="fs-5 mt-2">Your account is successfully created.</span></h5>
+            <div class="card d-flex justify-content-center p-1 m-3">
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">                                
+                        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_gaxn5gzy.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        <h1 class="align-self-center"><?= $this->session->flashdata('success'); ?></h1>
+                    </div>
+                    <h3>Your account successfully created!</h3>
+                    <a href="<?= site_url('Login'); ?>" class="btn btn-success">Login</a>
+                </div>
             </div>
 
             <hr>
 
             <div class="text-center">
-                <h3>Enjoy browsing our browser</h3>                
+                <h3>In our browser you can do the following:</h3>                
             </div>
             <div class="container mt-3 mb-3 text-center">
                 <div class="row">                    
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://www.pngitem.com/pimgs/m/714-7147277_transparent-add-to-cart-png-png-download.png" class="card-img-top" alt="...">
+                            <div class="d-flex justify-content-center card-header">                                
+                                <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_gktputje.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                <h1 class="align-self-center"><?= $this->session->flashdata('success'); ?></h1>
+                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Add to cart your product</h5>
+                                <h5 class="card-title">Add to cart the product</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://www.pngitem.com/pimgs/m/714-7147277_transparent-add-to-cart-png-png-download.png" class="card-img-top" alt="...">
+                            <div class="d-flex justify-content-center card-header">                                
+                                <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_vbrwdppa.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                <h1 class="align-self-center"><?= $this->session->flashdata('success'); ?></h1>
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title">Checkout your product</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://www.pngitem.com/pimgs/m/714-7147277_transparent-add-to-cart-png-png-download.png" class="card-img-top" alt="...">
+                            <div class="d-flex justify-content-center card-header">                                
+                                <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_oosm9mdk.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                <h1 class="align-self-center"><?= $this->session->flashdata('success'); ?></h1>
+                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Transaction Success</h5>
+                                <h5 class="card-title">Transact the product</h5>
                             </div>
                         </div>
                     </div>

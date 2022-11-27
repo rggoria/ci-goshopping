@@ -3,7 +3,7 @@
     <!-- Card -->
     <div class="card border-gray w-50">
         <!-- Card Header -->
-        <div class="card-header text-bg-gray p-4 text-center fs-2"> Sign Up</div>
+        <div class="card-header text-bg-gray p-4 text-center fs-2">Forget Password</div>
         <!-- Card body -->
         <?= form_open('Profile/verify_password');?>
             <div class="card-body">

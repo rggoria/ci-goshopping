@@ -16,24 +16,28 @@ class Login extends CI_Controller {
         $this->load->library(array('form_validation', 'pagination', 'upload', 'session'));
     }
     public function index() {
-        // Setup Data
-        $data['title'] = "GoShopping: Login";
-
-        // My Cart        
-        $username = $this->session->userdata('login_username');
-        $count = $this->orderdb->get_order_count($username);
-        if($count == NULL) {
-            $data['order_count'] = 0;            
-        } else {
-            $data['order_count'] = $count; 
-        } 
-
-        // Load view file        
-        $this->load->view('include/header', $data);
-        $this->load->view('include/navbar', $data);
-        $this->load->view('users/login_view', $data);
-        $this->load->view('include/footer', $data);
         
+        if ($this->session->userdata('login_state')) {
+            redirect('Homepage');
+        } else {
+            // Setup Data
+            $data['title'] = "GoShopping: Login";
+
+            // My Cart        
+            $username = $this->session->userdata('login_username');
+            $count = $this->orderdb->get_order_count($username);
+            if($count == NULL) {
+                $data['order_count'] = 0;            
+            } else {
+                $data['order_count'] = $count; 
+            } 
+
+            // Load view file        
+            $this->load->view('include/header', $data);
+            $this->load->view('include/navbar', $data);
+            $this->load->view('users/login_view', $data);
+            $this->load->view('include/footer', $data);
+        }        
     }
 
     // Login Validation Function
@@ -77,10 +81,8 @@ class Login extends CI_Controller {
                     redirect('Homepage');
                 }
             }else{
-                $data['error'] = 'Login credentials are not correct.';
-                $data['title'] = "Log In";
-                $this->load->view('include/header', $data);
-                $this->index();
+                $this->session->set_flashdata('failed', 'Login credentials are not correct.');   
+                redirect('Login');
             }
         }
     }

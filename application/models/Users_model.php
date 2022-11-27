@@ -144,5 +144,23 @@ class Users_model extends CI_Model {
         $this->db->where('user_email', $user_email);
         $this->db->update('table_user', array('user_password' => $user_password)); 
     }
+
+    // Upload Image (Profile Module [Upload Image])
+    public function upload_image($data){
+        extract($data);
+        $this->db->where(array(
+            'user_username' => $user_username
+        ));
+        $this->db->update('table_user', $data); 
+    }
+
+    // Upload Password (Profile Module [Update Password])
+    public function update_password($data){
+        extract($data);
+        $this->db->where(array(
+            'user_id' => $user_id
+        ));
+        $this->db->update('table_user', $data); 
+    }    
 }
 ?>

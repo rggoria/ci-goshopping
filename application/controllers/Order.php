@@ -58,6 +58,46 @@ class Order extends CI_Controller {
         }
     }
 
+    // Arrival (Order Module [Add Arrival])
+    public function arrival($id) {
+
+        $username = $this->session->userdata('login_username');
+
+        if ($username) {
+            // Setup Data
+            $data['title'] = "GoShopping: Add Order";
+
+            // My Cart        
+            $count = $this->orderdb->get_order_count($username);
+            if($count == NULL) {
+                $data['order_count'] = 0;            
+            } else {
+                $data['order_count'] = $count; 
+            }
+
+            $product = $id;
+
+            $row = $this->productdb->get_product_detail($product);
+            foreach($row as $item){
+                $data['user_username'] = $username;
+                $data['product_id'] = $item -> product_id;
+                $data['product_image'] = $item -> product_image;
+                $data['product_name'] = $item -> product_name;
+                $data['product_description'] = $item -> product_description;
+                $data['product_price'] = $item -> product_price;
+                $data['product_category'] = $item -> product_category;
+            }
+            
+            // Load view file        
+            $this->load->view('include/header', $data);
+            $this->load->view('include/navbar', $data);
+            $this->load->view('order/add_arrival_view', $data);
+            $this->load->view('include/footer', $data);
+        } else {
+            redirect('Login');
+        }
+    }
+
     // Cart (Order Module [My Cart])
     public function cart(){
         // Setup Data
@@ -114,6 +154,38 @@ class Order extends CI_Controller {
             }
           
             redirect('Homepage/Category/'.$item -> product_category);
+        }
+    }
+
+    // Add Cart (Order Module)
+    public function add_arrival_cart($id) {
+        // Setup Data
+        $username = $this->session->userdata('login_username');
+        $product = $id;
+        $quantity = $this->input->post('quantity');
+
+        $row = $this->productdb->get_product_detail($product);
+        foreach($row as $item){
+            $data['user_username'] = $username;
+            $data['product_image'] = $item -> product_image;
+            $data['product_name'] = $item -> product_name;
+            $data['product_price'] = $item -> product_price;
+            $data['order_quantity'] = $quantity;
+            
+            $result = $this->orderdb->check_order($data);
+            if ($result == NULL) {                
+                $this->orderdb->add_order($data);                  
+            } else {
+                $data['order_id'] = $result->order_id;
+                $data['user_username'] = $username;
+                $data['product_image'] = $item -> product_image;
+                $data['product_name'] = $item -> product_name;
+                $data['product_price'] = $item -> product_price;
+                $data['order_quantity'] = $quantity + $result->order_quantity;
+                $this->orderdb->update_order($data);
+            }
+          
+            redirect('Homepage/arrival/');
         }
     }
 

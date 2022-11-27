@@ -8,29 +8,31 @@
   </div>
   <!-- Background image -->
   <div class="card py-5 px-md-5  shadow-5-strong" style="margin-top: -100px; backdrop-filter: blur(30px);">
-    <?php if ($this->session->flashdata('success')): ?>
-      <div class="row d-flex justify-content-center mb-2">
-        <div class="col-lg-4">
-          <div class="bg-success p-3">
-            <h1 class="text-white"><?= $this->session->flashdata('success'); ?></h1>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
-    <?php if ($this->session->flashdata('error')): ?>
-      <div class="row d-flex justify-content-center mb-2">
-        <div class="col-lg-4">
-          <div class="bg-danger p-3">
-            <h1 class="text-white"><?= $this->session->flashdata('error'); ?></h1>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
     <i class="fa fa-users fa-light fa-9x"></i>
     <div class="card-body py-5 px-md-5 ">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-4">
-          <h2 class="fw-bold mb-5">Edit A User</h2>
+          <?php if ($this->session->flashdata('error')): ?>
+            <div class="card d-flex justify-content-center p-1 m-3">
+              <div class="text-center">
+                <div class="d-flex justify-content-center">                                
+                  <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_bdnjxekx.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                  <h1 class="align-self-center"><?= $this->session->flashdata('error'); ?></h1>
+                </div>                    
+              </div>
+            </div>
+          <?php elseif ($this->session->flashdata('success')): ?>
+            <div class="card d-flex justify-content-center p-1 m-3">
+              <div class="text-center">
+                <div class="d-flex justify-content-center">                                
+                  <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_gaxn5gzy.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                  <h1 class="align-self-center"><?= $this->session->flashdata('success'); ?></h1>
+                </div>                    
+              </div>
+            </div>
+          <?php else: ?>
+            <h2 class="fw-bold mb-5">Edit A User</h2>
+          <?php endif; ?>
           <?php echo form_open('Admin/edit_user_validation/'.$user->user_id); ?>
             <div class="form-outline mb-4">
               <div class="row">              

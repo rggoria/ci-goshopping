@@ -17,32 +17,32 @@
             <!-- First Slide Start -->
             <div class="container mt-3 mb-5 pb-5">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://i.pinimg.com/originals/07/87/a6/0787a6c9bce72eb7026e9069fefbcc9a.png" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p1.png');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Meat</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4" readonly>High quality and fresh livestock containing all the amino acids necessary for the human body.</textarea>
                                 <a href="<?php echo site_url('Homepage/Category/Meat') ?>" class="btn btn-white border-dark">Go to Meat Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://static.vecteezy.com/system/resources/thumbnails/005/607/208/small_2x/meat-and-meat-products-color-set-simple-design-on-brown-background-flat-style-cartoon-illustration-free-vector.jpg" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p2.jpg');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Poultry</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">The best proteins which are chickens and eggs, require the best service keeping it loyal to the quality fresh from the start.</textarea>
                                 <a href="<?= site_url('Homepage/category/Poultry');?>" class="btn btn-white border-dark">Go to Poultry Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://img.freepik.com/free-vector/drinks_1308-4653.jpg?w=2000" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p3.webp');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Beverages</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Craving for a beverage? Well, there are so many options for you to choose from, for example, juice, beer, wine, etc. This wide variety of beverages may dazzle you.</textarea>
                                 <a href="<?= site_url('Homepage/category/Beverages');?>" class="btn btn-white border-dark">Go to Beverages Category</a>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
+            <h5>First slide</h5>
                 <p>Representative category content for the first slide.</p>
             </div>
             <!-- First Slide End -->
@@ -60,32 +60,32 @@
             <!-- Second Slide Start -->
             <div class="container mt-3 mb-5 pb-5">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://st.depositphotos.com/1531425/1985/v/450/depositphotos_19856381-stock-illustration-personal-care-icons.jpg" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p4.jpg');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Personal Care</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Personal care or toiletries used in personal hygiene, personal grooming or for beautification.</textarea>
                                 <a href="<?= site_url('Homepage/category/Personal Care');?>" class="btn btn-white border-dark">Go to Personal Care Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="http://unblast.com/wp-content/uploads/2020/09/Fruit-and-Vegetable-Icons-2.jpg" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p5.jpg');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Fruits and Vegetables</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Cabbage, cauliflower, Brussels sprouts and broccoli apples and pears etc.</textarea>
                                 <a href="<?= site_url('Homepage/category/Fruits and Vegetables');?>" class="btn btn-white border-dark">Go to Fruits and Vegetables Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://img.freepik.com/free-vector/fast-food-icon-set_1284-4716.jpg?w=2000" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p6.webp');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Junk Foods</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Imported and native junk foods including Ruffles, Lays, Cheesy, Piattos, Pillows, Nova, Tortillas.</textarea>
                                 <a href="<?= site_url('Homepage/category/Junk Foods');?>" class="btn btn-white border-dark">Go to Junk Foods Category</a>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
+            <h5>Second slide</h5>
                 <p>Representative category content for the second slide.</p>
             </div>
             <!-- Second Slide End -->
@@ -103,32 +103,32 @@
             <!-- Third Slide Start -->
             <div class="container mt-3 mb-5 pb-5">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://img.freepik.com/free-vector/seafood-icon-set-with-fish-vine-which-are-prepared-restaurant_1284-33861.jpg?w=2000" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p7.webp');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Seafood</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Fresh and High Quality Bangus, Galunggong, Tilapia, etc.</textarea>
                                 <a href="<?= site_url('Homepage/category/Seafood');?>" class="btn btn-white border-dark">Go to Seafood Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://media.istockphoto.com/id/1213557382/vector/processed-foods-icon-set.jpg?s=612x612&w=0&k=20&c=OnRXPEv2XBxa-cozPeo8y14Gp_z1e71OJFBJGBUnIks=" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p8.jpg');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Processed Foods</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Cereals, Cheese, Bacon, Sausage, Ham Salami, MRE.</textarea>
                                 <a href="<?= site_url('Homepage/category/Processed Foods');?>" class="btn btn-white border-dark">Go to Processed Foods Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://static.vecteezy.com/system/resources/previews/005/317/422/non_2x/bakery-icons-set-outline-style-vector.jpg" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p9.jpg');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Bread and Bakery</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Crinkles, Pandesal, Gardenia, Black Forest, Ensymada, Hopia, Siopao, Empanada.</textarea>
                                 <a href="<?= site_url('Homepage/category/Bread and Bakery');?>" class="btn btn-white border-dark">Go to Bread and Bakery Category</a>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                 </div>
             </div>
             <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
+            <h5>Third slide</h5>
                 <p>Representative category content for the third slide.</p>
             </div>
             <!-- Third Slide End -->
@@ -146,32 +146,32 @@
             <!-- Fourth Slide Start -->
             <div class="container mt-3 mb-5 pb-5">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://cdn.w600.comps.canstockphoto.com/cleaning-supplies-vector-clip-art_csp30713316.jpg" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p10.png');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Cleaners</h5>
-                                <p class="card-text">All- purpose, laundry detergent, dishwashing liquid/detergent</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">All- purpose, laundry detergent, dishwashing liquid/detergent</textarea>
                                 <a href="<?= site_url('Homepage/category/Cleaners');?>" class="btn btn-white border-dark">Go to Cleaners Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://media.istockphoto.com/id/1353743528/vector/supermarket-line-icons.jpg?s=612x612&w=0&k=20&c=Nc-ToKZpjYmxDUpTfauFE_2wf3aKf_RcGFjAUf8EsXs=" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p11.jpg');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Paper Goods</h5>
-                                <p class="card-text">Paper towels, toilet paper, aluminum foil, sandwich bags</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Paper towels, toilet paper, aluminum foil, sandwich bags</textarea>
                                 <a href="<?= site_url('Homepage/category/Paper Goods');?>" class="btn btn-white border-dark">Go to Paper Goods Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://media.istockphoto.com/id/1144415199/vector/colored-icon-collection-food-in-aluminum-can-canned-fruits-and-olives-product-for.jpg?s=612x612&w=0&k=20&c=GVwbbInV2vcZs8JKCPdxswhhwxMSIrK19yfYVqJIDZw=" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p12.jpg');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Canned and Jarred Goods</h5>
-                                <p class="card-text">All- purpose, laundry detergent, dishwashing liquid/detergent</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">All canned goods ready to eat, Corned Beef, Century Tuna, Sarines, Sisig.</textarea>
                                 <a href="<?= site_url('Homepage/category/Canned and Jarred Goods');?>" class="btn btn-white border-dark">Go to Canned and Jarred Goods Category</a>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                 </div>
             </div>
             <div class="carousel-caption d-none d-md-block">
-            <h5>Fourth slide label</h5>
+            <h5>Fourth slide</h5>
                 <p>Representative category content for the fourth slide.</p>
             </div>
             <!-- Fourth Slide End -->
@@ -189,33 +189,32 @@
             <!-- Fifth Slide Start -->
             <div class="container mt-3 mb-5 pb-5">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://www.freeiconspng.com/uploads/supermarket-png-4.png
-                            " class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p13.png');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Cereal</h5>
-                                <p class="card-text">Oats, rice, wheat, granola, etc.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Oats, rice, wheat, granola, etc.</textarea>
                                 <a href="<?= site_url('Homepage/category/Cereal');?>" class="btn btn-white border-dark">Go to Cereal Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://img.freepik.com/premium-vector/frozen-food-store-with-products-vacuumed-using-foil-pouch-packaging-be-fresh-illustration_2175-8688.jpg?w=2000" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p14.webp');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Frozen Foods</h5>
-                                <p class="card-text">Fish, ice cream, pizza, potatoes, ready meals, etc.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Fish, ice cream, pizza, potatoes, ready meals, etc.</textarea>
                                 <a href="<?= site_url('Homepage/category/Frozen Foods');?>" class="btn btn-white border-dark">Go to Frozen Foods Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="http://cdn.shopify.com/s/files/1/0434/9824/2204/collections/Rice_Pasta_Noodles_1200x1200.png?v=1597717641" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p15.webp');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Pasta and Rice</h5>
-                                <p class="card-text">Spaghetti, macaroni, noodles, white rice, etc.</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Spaghetti, macaroni, noodles, white rice, etc.</textarea>
                                 <a href="<?= site_url('Homepage/category/Pasta and Rice');?>" class="btn btn-white border-dark">Go to Pasta|Rice Category</a>
                             </div>
                         </div>
@@ -223,7 +222,7 @@
                 </div>
             </div>
             <div class="carousel-caption d-none d-md-block">
-            <h5>Fifth slide label</h5>
+            <h5>Fifth slide</h5>
                 <p>Representative category content for the fifth slide.</p>
             </div>
             <!-- Fifth Slide End -->
@@ -233,31 +232,31 @@
             <!-- Sixth Slide Start -->
             <div class="container mt-3 mb-5 pb-5">
                 <div class="row">
-                    <div class="col-4 row">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://t4.ftcdn.net/jpg/01/85/06/93/360_F_185069371_GfhFqb7GP0mhZYlnY1ZcsO9v2amxabKh.jpg" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p16.jpg');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Deli</h5>
-                                <p class="card-text">Cheese, ham, turkey, salami, etc</p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Cheese, ham, turkey, salami, etc</textarea>
                                 <a href="<?= site_url('Homepage/category/Deli');?>" class="btn btn-white border-dark">Go to Deli Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
-                            <img src="https://img.freepik.com/premium-vector/sauce-icon-ketchup-mayonnaise-mustard-soy-sauce-glass-plastic-bottle-tube-bowl-condiment-wavy-trace-stain-icon-set-white-background-food-ingredient-illustration_124507-8321.jpg?w=2000" class="card-img-top" alt="...">
+                            <img src="<?= base_url('uploads/private/p17.webp');?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Condiments</h5>
-                                <p class="card-text">Salt, sugar, pepper, oregano, cinnamon, ketchup, mayonnaise, mustard , etc.</p>
-                                <a href="#" class="btn btn-white border-dark">Go to Condiments Category</a>
+                                <textarea class="form-control bg-white mb-2" rows="4">Salt, sugar, pepper, oregano, cinnamon, ketchup, mayonnaise, mustard, etc.</textarea>
+                                <a href="<?= site_url('Homepage/category/Condiments');?>" class="btn btn-white border-dark">Go to Condiments Category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4 row">
+                    <div class="col-md-4 mb-2">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Others</h5>
-                                <p class="card-text">Baby items, pet items, batteries, greeting cardsp, flowers, tobacco, etc. </p>
+                                <textarea class="form-control bg-white mb-2" rows="4">Baby items, pet items, batteries, greeting cards, flowers, tobacco, etc. </textarea>
                                 <a href="<?= site_url('Homepage/category/Others');?>" class="btn btn-white border-dark">Go to Others Category</a>
                             </div>
                         </div>
@@ -265,7 +264,7 @@
                 </div>
             </div>
             <div class="carousel-caption d-none d-md-block">
-                <h5>Sixth slide label</h5>
+                <h5>Sixth slide</h5>
                 <p>Representative category content for the sixth slide.</p>
             </div>
             <!-- Sixth Slide End -->
@@ -284,20 +283,44 @@
 
 <section class="bg-dark py-5 text-center container-fluid">    
     <div class="row py-lg-5">
-        <div class="col-6 text-white align-self-center">
+        <div class="col-md-6 text-white align-self-center">
+            <div class="card-body d-flex justify-content-center">
+                <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_7foh1e6l.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+            </div> 
             <h1>New Arriving Products</h1>
-            <div class="btn text-white border border-white">View Products</div>
+            <a href="<?php echo site_url('Homepage/arrival/') ?>" class="btn text-white border border-white">View Products</a>
         </div>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">
-                    <?= $new_list->product_name; ?>
+        <div class="col-md-4">
+            <?php if($new_list): ?>
+                <div class="card">                        
+                        <div class="card-header">
+                            <img src="<?= base_url('uploads/images/product/'.$new_list->product_image);?>" class="card-img-top img-thumbnail">
+                        </div>                        
+                        <div class="card-body">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Name</span>
+                                <input class="form-control bg-white" value="<?= $new_list->product_name; ?>" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="fa-solid fa-circle-info fa-2x"></i></span>
+                                <textarea class="form-control bg-white" rows="3" readonly><?= $new_list->product_description;  ?></textarea>
+                            </div> 
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">PHP</span>
+                                <input class="form-control bg-white" value="<?= number_format($new_list->product_price, 2);  ?>" readonly>
+                            </div>                    
+                        </div>
+                    </div>   
+            <?php else: ?>
+                <div class="card text-center">
+                    <div class="card-title">
+                        <h1>Sorry for the inconvenience there are still no updates yet.</h1>
+                    </div>
+                    <div class="card-body d-flex justify-content-center">
+                        <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_e3pteeho.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                    </div>                    
                 </div>
-                <img class="card-img-top" src="<?= base_url('uploads/images/'.$new_list->product_image);?>" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text"><?= $new_list->product_description; ?></p>
-                </div>
-            </div>
+            <?php endif; ?>            
         </div>
     </div>
 </section>

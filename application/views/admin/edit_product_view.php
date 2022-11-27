@@ -12,36 +12,38 @@
 <div class="card py-5 px-md-5 shadow-5-strong text-center">  
   <i class="fa fa-users fa-light fa-9x"></i>
   <div class="card-body">
-    <h2 class="fw-bold mb-3">Edit A Product</h2>    
-    <?php if ($this->session->flashdata('success')): ?>
-      <div class="d-flex justify-content-center m-2">
-        <div class="col-lg-4">
-          <div class="bg-success p-3">
-            <h1 class="text-white"><?= $this->session->flashdata('success'); ?></h1>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
     <?php if ($this->session->flashdata('error')): ?>
-      <div class="row d-flex justify-content-center mb-2">
-        <div class="col-lg-4">
-          <div class="bg-danger p-3">
-            <h1 class="text-white"><?= $this->session->flashdata('error'); ?></h1>
-          </div>
+      <div class="card d-flex justify-content-center p-1 m-3">
+        <div class="text-center">
+          <div class="d-flex justify-content-center">                                
+            <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_bdnjxekx.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+            <h1 class="align-self-center"><?= $this->session->flashdata('error'); ?></h1>
+          </div>                    
         </div>
       </div>
-    <?php endif; ?>    
+    <?php elseif ($this->session->flashdata('success')): ?>
+      <div class="card d-flex justify-content-center p-1 m-3">
+        <div class="text-center">
+          <div class="d-flex justify-content-center">                                
+            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_gaxn5gzy.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+            <h1 class="align-self-center"><?= $this->session->flashdata('success'); ?></h1>
+          </div>                    
+        </div>
+      </div>
+    <?php else: ?>
+      <h2 class="fw-bold mb-5">Edit A Product</h2>
+    <?php endif; ?>
     <?= form_open('Admin/edit_product_validation/'.$product->product_id); ?>
       <div class="row d-flex justify-content-center">    
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="card m-2">            
             <div class="card-body">
-              <img id="preview" src="<?= base_url('uploads/images/'.$product->product_image);?>" class="card-img" height="400" width="200">
-            </div>                 
+              <img id="preview" src="<?= base_url('uploads/images/product/'.$product->product_image);?>" class="card-img" height="400" width="200">
+            </div>            
           </div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="card m-2">
             <div class="card-header">
               <h1>Product Details</h1>
@@ -79,7 +81,7 @@
 
                 <!-- Product Category -->
                 <div class="input-group">
-                  <label class="input-group-text" for="inputGroupSelect01">Choose Category</label>
+                  <label class="input-group-text" for="inputGroupSelect01">Product Category</label>
                   <input type="text" name="productcategory" class="form-control bg-white" value="<?= $product->product_category; ?>" readonly>
                 </div>
                 <label class="form-label">Product Category</label>           

@@ -21,13 +21,16 @@
                         </div>                    
                     <?php endif; ?>
                 </div>
-                <?php if(isset($error)):?>
-                    <div class="form-group">
-                        <div class="alert alert-danger text-dark text-center">
-                        <h4><?= $error; ?></h4>
+                <?php if ($this->session->flashdata('failed')): ?>
+                    <div class="card d-flex justify-content-center p-3">
+                        <div class="text-center">
+                            <div class="d-flex justify-content-center">                                
+                                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_bdnjxekx.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                <h1 class="align-self-center"><?= $this->session->flashdata('failed'); ?></h1>
+                            </div>                    
                         </div>
                     </div>
-                <?php endif;?>
+                <?php endif; ?>
                 <?php if ($this->session->flashdata('message')): ?>
                     <div class="row d-flex justify-content-center m-2">                        
                         <div class="bg-success p-3">

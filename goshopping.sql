@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2022 at 05:57 PM
+-- Generation Time: Nov 27, 2022 at 11:05 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -38,14 +38,6 @@ CREATE TABLE `table_order` (
   `order_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `table_order`
---
-
-INSERT INTO `table_order` (`order_id`, `user_username`, `product_image`, `product_name`, `product_price`, `order_quantity`, `order_status`, `order_date`) VALUES
-(1, 'RamTheGreat', 'Chicken.jpg', 'Chicken', 150, 10, 'PENDING', '2022-11-26 20:58:07'),
-(2, 'EasyPheasy', 'Chicken.jpg', 'Chicken', 150, 10, 'SUCCESSFULL', '2022-11-26 21:56:01');
-
 -- --------------------------------------------------------
 
 --
@@ -61,14 +53,6 @@ CREATE TABLE `table_product` (
   `product_category` varchar(50) NOT NULL,
   `product_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `table_product`
---
-
-INSERT INTO `table_product` (`product_id`, `product_image`, `product_name`, `product_description`, `product_price`, `product_category`, `product_date`) VALUES
-(1, 'Chicken.jpg', 'Chicken', '₱150 per kilo', '160', 'Poultry', '2022-11-26 20:53:17'),
-(2, 'Teriyaki_Chicken.jpg', 'Teriyaki Chicken', 'Fresh Teriyaki Chicken', '175', 'Meat', '2022-11-26 21:28:48');
 
 -- --------------------------------------------------------
 
@@ -86,14 +70,6 @@ CREATE TABLE `table_transaction` (
   `transaction_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `table_transaction`
---
-
-INSERT INTO `table_transaction` (`transaction_id`, `user_username`, `transaction_balance`, `user_balance`, `transaction_status`, `transaction_discount`, `transaction_date`) VALUES
-(1, 'EasyPheasy', 2147483647, 2147483647, 'DEPOSIT', 0, '2022-11-26 21:57:36'),
-(2, 'EasyPheasy', 1500, 2147482147, 'WITHDRAW', 0, '2022-11-26 21:58:39');
-
 -- --------------------------------------------------------
 
 --
@@ -102,6 +78,7 @@ INSERT INTO `table_transaction` (`transaction_id`, `user_username`, `transaction
 
 CREATE TABLE `table_user` (
   `user_id` int(11) NOT NULL,
+  `user_image` varchar(255) NOT NULL,
   `user_firstname` varchar(50) NOT NULL,
   `user_middlename` varchar(50) NOT NULL,
   `user_lastname` varchar(50) NOT NULL,
@@ -116,18 +93,15 @@ CREATE TABLE `table_user` (
   `user_address2` varchar(250) NOT NULL,
   `user_city` varchar(250) NOT NULL,
   `user_zipcode` varchar(4) NOT NULL,
-  `user_date` datetime NOT NULL
+  `user_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `table_user`
 --
 
-INSERT INTO `table_user` (`user_id`, `user_firstname`, `user_middlename`, `user_lastname`, `user_username`, `user_birthday`, `user_mobile`, `user_email`, `user_password`, `user_status`, `user_balance`, `user_address1`, `user_address2`, `user_city`, `user_zipcode`, `user_date`) VALUES
-(1, '', '', '', 'admin', '', '', 'admin', 'admin', 'ADMIN', 0, '', '', '', '', '2022-11-26 13:41:08'),
-(2, 'RamTheGreat', '', 'RamTheGreat', 'RamTheGreat', '', '', 'ramemersongoria.13.versus@gmail.com', '12345678', 'USER', 0, '', '', '', '', '0000-00-00 00:00:00'),
-(3, 'Antonio', '', 'Manila', 'EasyPheasy', '', '', 'manilaronquillo@gmail.com', '12345678', 'USER', 2147482147, '', '', '', '', '0000-00-00 00:00:00'),
-(4, 'Antonio ', '', 'Manila', 'A3Jayy', '', '', 'manilaajr.csabinan@gmail.com', '12345678', 'USER', 0, '', '', '', '', '0000-00-00 00:00:00');
+INSERT INTO `table_user` (`user_id`, `user_image`, `user_firstname`, `user_middlename`, `user_lastname`, `user_username`, `user_birthday`, `user_mobile`, `user_email`, `user_password`, `user_status`, `user_balance`, `user_address1`, `user_address2`, `user_city`, `user_zipcode`, `user_date`) VALUES
+(1, '', '', '', '', 'admin', '', '', 'admin', 'admin', 'ADMIN', 0, '', '', '', '', '2022-11-27 18:04:58');
 
 --
 -- Indexes for dumped tables
@@ -165,25 +139,25 @@ ALTER TABLE `table_user`
 -- AUTO_INCREMENT for table `table_order`
 --
 ALTER TABLE `table_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `table_product`
 --
 ALTER TABLE `table_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `table_transaction`
 --
 ALTER TABLE `table_transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `table_user`
 --
 ALTER TABLE `table_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

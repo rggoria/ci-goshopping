@@ -5,9 +5,11 @@
             <div class="card container">
                 <div class="row text-center">
                     <div class="col-md-4 d-flex justify-content-center align-items-center">
-                        <div class="">
-                            <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Generic placeholder image" class="img-fluid rounded-circle img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
-                        </div>
+                        <?php if($users->user_image): ?>
+                            <img id="preview" src="<?= base_url('uploads/images/profile/'.$users->user_image);?>" class="rounded-circle my-2 border border-dark img-thumbnail" height="150" width="150">
+                        <?php else: ?>
+                            <img id="preview" src="<?= base_url('uploads/private/profile.png');?>" class="rounded-circle my-2 border border-dark img-thumbnail" height="150" width="150">
+                        <?php endif; ?>                        
                     </div>
                     <div class="col-md-4 d-flex justify-content-center align-items-center">
                         <div>
@@ -48,8 +50,7 @@
                                         <tr>                                       
                                             <th scope="col">Date Made</th>
                                             <th scope="col">Transaction</th>
-                                            <th scope="col">User Balance</th>
-                                            <th scope="col">Discount</th>                                            
+                                            <th scope="col">User Balance</th>                                        
                                             <th scope="col">Status</th>
                                         </tr>
                                     </thead>
@@ -72,10 +73,7 @@
                                                     </td>
                                                     <td>
                                                         <p> PHP <?= number_format($transaction->user_balance, 2); ?></p>
-                                                    </td>
-                                                    <td>
-                                                        <p> PHP <?= number_format($transaction->transaction_discount, 2); ?></p>
-                                                    </td>                                                
+                                                    </td>                                               
                                                     <td>
                                                         <p><?= $transaction->transaction_status; ?></p>
                                                     </td>
@@ -83,8 +81,13 @@
                                             <?php endforeach; ?>   
                                         <?php elseif($transaction_list == 0): ?>
                                             <tr>
-                                                <td colspan="5">
-                                                    Empty
+                                                <td colspan="4">
+                                                    <div class="text-center">
+                                                        <h1>You have no transactions yet.</h1>
+                                                        <div class="d-flex justify-content-center">                                                        
+                                                            <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_iikbn1ww.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                                                        </div>                    
+                                                    </div>
                                                 </td>
                                             </tr>
                                         <?php endif; ?>                    
