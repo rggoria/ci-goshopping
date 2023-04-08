@@ -26,35 +26,35 @@ Step-by-step Installation:
 
 1. For github clone
     - Open your htdocs folder and open the terminal
-    - Paste this code on the terminal: git clone https://github.com/rggoria/GoShopping.git
+    - Paste this code on the terminal: git clone https://github.com/rggoria/ci-goshopping.git
     - Run your preferred browser then go to phpMyAdmin
-    - Create a new database named: goshopping
+    - Create a new database named: ci-goshopping
     - Then click the Import on the navigation
-    - The file is on the root folder that has a name: goshopping.sql
+    - The file is on the root folder that has a name: ci-goshopping.sql
     - Click the Choose File input and navigate the file
     - Then go down on the webpage then click the Import button and wait
-    - You can now run the project by input on the on the url: localhost/goshopping
-    Note: make sure your php server is running
+    - You can now run the project by input on the on the url: localhost/ci-goshopping
+    Note: Make sure your php server is running
 
 2. For download zip
     - Extract the zip file
-    - Then open the folder then you can see the filename: GoShopping-main
-    - Rename the folder: GoShopping-main into GoShopping
-    - Move the GoShopping file on the htdocs folder
+    - Then open the folder then you can see the filename: ci-goshopping-main
+    - Rename the folder: ci-goshopping-main into ci-goshopping
+    - Move the ci-goshopping file on the htdocs folder
     - Run your preferred browser then go to phpMyAdmin
-    - Create a new database named: goshopping
+    - Create a new database named: ci-goshopping
     - Then click the Import on the navigation
-    - The file is on the root folder that has a name: goshopping.sql
+    - The file is on the root folder that has a name: ci-goshopping.sql
     - Click the Choose File input and navigate the file
     - Then go down on the webpage then click the Import button and wait
-    - You can now run the project by input on the on the url: localhost/goshopping
-    Note: make sure your php server is running
+    - You can now run the project by input on the on the url: localhost/ci-goshopping
+    Note: Make sure your php server is running
 
 **************************
 Features
 **************************
 
-1. Webpages that can only accessed by user, admin
+1. Webpages that can only be accessed by users or admin.
 2. Storefront
 3. Security Measures and Mechanisms
 4. Cataloging
