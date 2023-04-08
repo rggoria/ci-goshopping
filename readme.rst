@@ -54,7 +54,7 @@ Step-by-step Installation:
 Features
 **************************
 
-1. Webpages that can only accessed by user, admin.
+1. Webpages that can only accessed by user, admin
 2. Storefront
 3. Security Measures and Mechanisms
 4. Cataloging
